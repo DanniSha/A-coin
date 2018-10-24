@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+}
+:root{
+    --background-color: #00a3e0;
+    --text-color: white;
+
+    width: 1080px;
+    height: 1920px;
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
