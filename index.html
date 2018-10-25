@@ -10,7 +10,12 @@
 </head>
 <body>
 <section class="check-slider-section">
-    <div class="slider" onclick="this.classList.toggle('switched', true);"></div>
+    <div class="slider" onclick="this.parentNode.classList.toggle('switched', true);"></div>
+    <div class="clip-hand-wrapper">
+        <div class="clip-hand">
+            <div class="hand"></div>
+        </div>
+    </div>
     <div class="hand"></div>
 </section>
 <section class="description-section">
