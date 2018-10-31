@@ -6,21 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="first.css">
-    <script src="index.mjs" type="module"></script>
+    <script type="module">
+        import Acoin from './index.mjs';
+
+        const App = new Acoin();
+    </script>
 </head>
 <body>
-<section class="check-slider-section">
-    <div class="slider" onclick="this.parentNode.classList.toggle('switched', true);"></div>
-    <div class="clip-hand-wrapper">
-        <div class="clip-hand">
-            <div class="hand"></div>
-        </div>
-    </div>
-    <div class="hand"></div>
-</section>
-<section class="description-section">
-    <div class="caption"><span class="space-after">01</span>А-коины</div>
-    <div class="header">Каждое действие на сайте приносит деньги</div>
-</section>
+
 </body>
 </html>
