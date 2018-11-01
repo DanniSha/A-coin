@@ -20,3 +20,36 @@ html, body {
     background-color: var(--background-color);
     color: var(--text-color);
 }
+
+@font-face {
+    font-family: ProximaNova;
+    src: url("fonts/proxima_nova_regular-webfont.eot");
+    src: url("fonts/proxima_nova_regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/proxima_nova_regular-webfont.woff2") format("woff2"), url("fonts/proxima_nova_regular-webfont.woff") format("woff"), url("fonts/proxima_nova_regular-webfont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: ProximaNova;
+    src: url("fonts/proxima_nova_extrabold-webfont.eot");
+    src: url("fonts/proxima_nova_extrabold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/proxima_nova_extrabold-webfont.woff2") format("woff2"), url("fonts/proxima_nova_extrabold-webfont.woff") format("woff"), url("fonts/proxima_nova_extrabold-webfont.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+:root {
+    font-family: ProximaNova, sans-serif;
+}
+
+body {
+    --root-padding: calc(var(--height-px) * 100) calc(var(--width-px) * 100);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--root-padding);
+}
+
+html, body {
+    /*width: 100%;*/
+    overflow: hidden;
+}

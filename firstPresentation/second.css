@@ -1,0 +1,196 @@
+
+.coin-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.coin {
+    --size: 323rem;
+    height: var(--size);
+    width: var(--size);
+    align-self: center;
+    background: var(--background-color) url(../coin2.svg) no-repeat center/contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    -webkit-mask-image: url(../coin2.svg);
+    mask-image: url(../coin2.svg);
+    mask-mode: alpha;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.coin-blink {
+    width: 100%;
+    height: 20%;
+    background: white;
+    opacity: 0.5;
+    transform: rotate(320deg);
+    animation: coin-blink 3s infinite;
+}
+
+@keyframes coin-blink {
+    0% {
+        opacity: 0;
+        transform: rotate(320deg) translateY(-400%);
+    }
+    70% {
+        transform: rotate(320deg) translateY(-400%);
+    }
+    100% {
+        transform: rotate(320deg) translateY(400%);
+    }
+}
+
+.background-rays-mask {
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    overflow: hidden;
+}
+
+.background-rays-mask:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: calc(50% - (330rem / 2));
+    top: calc(50% - (330rem / 2));
+    right: 0;
+    bottom: 0;
+    width: 330rem;
+    height: 330rem;
+    border-radius: 50%;
+    background: var(--background-color);
+}
+
+.background-rays-mask:after {
+    --size: 2500rem;
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 10;
+    left: calc(50% - (var(--size) / 2));
+    top: calc(50% - (var(--size) / 2));
+    right: 0;
+    bottom: 0;
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(ellipse at center, rgba(0, 163, 224, 0) 0%, rgba(0, 163, 224, 1) 65%, rgba(0, 163, 224, 1) 100%);
+}
+
+.background-rays {
+    /*background: repeating-conic-gradient(hsla(0,0%,100%,.2) 0 15deg, hsla(0,0%,100%,0) 0 30deg);*/
+    position: absolute;
+    /*z-index: 1;*/
+    left: -1em;
+    right: -1em;
+    top: -1em;
+    bottom: -1em;
+    margin: auto;
+    padding: 0;
+    width: 0;
+    height: 0;
+    list-style: none;
+    -webkit-animation: 10s rotate infinite linear;
+    animation: 10s rotate infinite linear;
+}
+
+.background-rays LI /*,
+.background-rays LI:before,*/
+    /*.background-rays LI:after*/
+{
+    position: absolute;
+    border: 0 solid transparent;
+    border-width: 4em 20em;
+    border-color: transparent rgba(80, 191, 231, 0.7);
+    width: 0;
+    height: 0;
+    font-size: 70rem;
+}
+
+.background-rays LI {
+    left: -20em;
+    top: 50%;
+    margin-top: -4em;
+    -webkit-transform: rotate(0.1deg);
+    transform: rotate(0.1deg);
+}
+
+/*.background-rays LI:before,
+.background-rays LI:after {
+    left: -20em;
+    top: -1.2em;
+    display: block;
+    content: "";
+}
+
+.background-rays LI:before {
+    -webkit-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+
+.background-rays LI:after {
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+}*/
+
+.background-rays LI:nth-child(2) {
+    /*-webkit-transform: rotate(15deg);*/
+    transform: rotate(45deg);
+}
+
+.background-rays LI:nth-child(3) {
+    /*-webkit-transform: rotate(30deg);*/
+    transform: rotate(90deg);
+}
+
+.background-rays LI:nth-child(4) {
+    /*-webkit-transform: rotate(45deg);*/
+    transform: rotate(135deg);
+}
+
+@-webkit-keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.button-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    margin-top: 385rem;
+}
+
+.button-section button {
+    -webkit-appearance: none;
+    border: none;
+    background: white;
+    color: var(--background-color);
+    width: 880rem;
+    height: 128rem;
+    border-radius: 128rem;
+    font-size: 32rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
