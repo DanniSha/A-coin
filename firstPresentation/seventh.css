@@ -1,0 +1,63 @@
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wallet-section {
+    /*position: absolute;*/
+    /*top: var(--root-padding-height);*/
+    /*left: 0;*/
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.wallet-section img {
+    height: 56rem;
+}
+
+.wallet-section .balance {
+    margin-left: 20rem;
+    vertical-align: middle;
+    font-size: 48rem;
+    line-height: 1.17;
+    font-weight: bold;
+}
+
+.description-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+    margin-top: 140rem;
+}
+
+.description-section .header {
+    font-size: 48rem;
+    text-align: left;
+    margin-bottom: 100rem;
+}
+
+.description-section .text {
+    font-size: 36rem;
+}
+
+.button-section {
+    z-index: 20;
+    margin-top: 137rem;
+}
+
+.button-section button {
+    -webkit-appearance: none;
+    border: none;
+    background: white;
+    color: var(--background-color);
+    width: 880rem;
+    height: 128rem;
+    border-radius: 128rem;
+    font-size: 32rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}

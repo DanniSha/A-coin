@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Presentation</title>
+    <meta content="user-scalable=no, width=device-width, height=device-height, initial-scale=1" name="viewport">
+    <link href="../base.css" rel="stylesheet">
+    <link href="sixth.css" rel="stylesheet">
+</head>
+<body>
+<section class="wallet-section">
+    <img src="../wallet.svg"/><span class="balance">300</span>
+</section>
+<section class="interactive-section">
+    <div class="modal-section">
+        <button onclick="this.parentNode.parentNode.classList.toggle('active'); animateValueDelay('.balance', 300, 500, 500, 1000);">
+            Записаться
+        </button>
+    </div>
+    <div class="coins-section">
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+        <div class="coin"></div>
+    </div>
+</section>
+<section class="description-section">
+    <div class="text">
+        Записывайся на услуги и оставляй отзывы
+    </div>
+</section>
+<script>
+    function animateValueDelay(id, start, end, duration, delay) {
+        return setTimeout(function () {
+            animateValue(id, start, end, duration)
+        }, delay);
+    }
+
+    function animateValue(id, start, end, duration) {
+        var range = end - start;
+        var current = start;
+        var increment = end > start ? 1 : -1;
+        var stepTime = Math.abs(Math.floor(duration / range));
+        var obj = document.querySelector(id);
+        var timer = setInterval(function () {
+            current += increment;
+            obj.innerHTML = current;
+            if (current == end) {
+                clearInterval(timer);
+            }
+        }, stepTime);
+    }
+</script>
+</body>
+</html>
