@@ -39,6 +39,8 @@ export default class Presentation {
 
         this.TerminalApp.currentSlide = slide;
 
+        this.TerminalApp.currentSlideId = id;
+
         if (historyPush && (!history.state || history.state.slide !== slide || history.state.presentation !== this.data.id))
             history.pushState({slide: id, presentation: this.data.id}, this.data.title, `?${this.data.id}#${id}`);
 

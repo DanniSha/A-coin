@@ -2,12 +2,13 @@ import ACoinPresentation from './presentations/a-coin.mjs';
 
 export default class TerminalApp {
 
-    constructor({htmlPath = 'assets/html/'} = {}) {
+    constructor({htmlPath = 'assets/html/', idleTimeout = 10000} = {}) {
 
         this.TerminalApp = this;
 
         this.parameters = {
-            htmlPath
+            htmlPath,
+            idleTimeout
         };
 
         this.presentations = {
@@ -19,6 +20,8 @@ export default class TerminalApp {
         this.preparePresentations();
 
         window.addEventListener('popstate', async event => event.state ? await this.initPresentation(event.state.presentation, event.state.slide, false) : await this.showTerminalMenu(false));
+
+        document.addEventListener('click', this.resetIdleTimer.bind(this));
 
     }
 
@@ -40,12 +43,12 @@ export default class TerminalApp {
 
         const menuDescription = document.createElement('section');
         menuDescription.classList.add('description-section');
-        menuDescription.setAttribute('data-slide-swith','');
-        menuDescription.innerHTML=`<div class="header">Сервисное меню</div>`;
+        menuDescription.setAttribute('data-slide-swith', '');
+        menuDescription.innerHTML = `<div class="header">Сервисное меню</div>`;
 
         const menuWrapper = document.createElement('section');
         menuWrapper.classList.add('button-section');
-        menuWrapper.setAttribute('data-slide-swith','');
+        menuWrapper.setAttribute('data-slide-swith', '');
 
         Object.entries(this.presentations).forEach((presentation => {
             const presentationLink = document.createElement('button');
@@ -70,8 +73,21 @@ export default class TerminalApp {
 
         // this.currentSlide = false;
 
+        this.resetIdleTimer();
+
         return this.presentations[presentation].init(slide, historyPush);
 
+    }
+
+    resetIdleTimer() {
+        clearTimeout(this.idleTimeout);
+        this.idleTimeout = setTimeout(this.triggerIdleTimer.bind(this), this.parameters.idleTimeout);
+    }
+
+    triggerIdleTimer() {
+        if (this.TerminalApp.currentSlideId && this.TerminalApp.currentPresentation && this.TerminalApp.currentPresentation.data.entrySlide !== this.TerminalApp.currentSlideId)
+            this.initPresentation(this.TerminalApp.currentPresentation.data.id);
+        this.resetIdleTimer();
     }
 
     async unloadPage(emptyBody = true) {
@@ -81,6 +97,7 @@ export default class TerminalApp {
         if (emptyBody) document.body.innerHTML = '';
 
         this.currentSlide = false;
+        this.currentSlideId = false;
 
         return await true;
     }
