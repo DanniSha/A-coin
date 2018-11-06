@@ -1,49 +1,3 @@
-@font-face {
-    font-family: ProximaNova;
-    src: url("fonts/proxima_nova_regular-webfont.eot");
-    src: url("fonts/proxima_nova_regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/proxima_nova_regular-webfont.woff2") format("woff2"), url("fonts/proxima_nova_regular-webfont.woff") format("woff"), url("fonts/proxima_nova_regular-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: ProximaNova;
-    src: url("fonts/proxima_nova_extrabold-webfont.eot");
-    src: url("fonts/proxima_nova_extrabold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/proxima_nova_extrabold-webfont.woff2") format("woff2"), url("fonts/proxima_nova_extrabold-webfont.woff") format("woff"), url("fonts/proxima_nova_extrabold-webfont.ttf") format("truetype");
-    font-weight: 800;
-    font-style: normal;
-}
-
-:root {
-    font-family: ProximaNova, sans-serif;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: calc(var(--height-px) * 100) calc(var(--width-px) * 100);
-}
-
-/* Description */
-
-.description-section {
-    font-size: 40rem;
-    line-height: 1.1;
-}
-
-.description-section .space-after {
-    margin-right: 45rem;
-}
-
-.description-section .header {
-    font-weight: 800;
-    font-size: 60rem;
-    line-height: 1.2;
-    margin: 110rem 0;
-    text-transform: uppercase;
-}
-
 /* Check slider and parts */
 
 .check-slider-section {
@@ -88,6 +42,7 @@ body {
     height: var(--slider-border-height);
     width: var(--slider-border-width);
     border-radius: calc(var(--slider-border-height) / 2);
+
 }
 
 .check-slider-section.switched {
@@ -100,14 +55,14 @@ body {
 
 .check-slider-section.switched .slider:after {
     content: '';
-    opacity: 0;
-    background: transparent url(otrostok.svg) no-repeat 76% 49%/450rem;
     position: absolute;
-    height: var(--circle-size);
-    width: calc(var(--circle-size) * 1.5);
-    margin-left: calc(var(--circle-size) * -0.5);
+    border-radius: 50%;
+    width: calc(100% + 15rem);
+    height: calc(100% + 15rem);
+    border-left: 0rem solid white;
+    transform: rotate(0) translate(0,0);
 
-    animation: slider-border-switch-decoration 1s 0.5s 1 forwards;
+    animation: slider-border-switch-decoration .5s 1.3s 1 forwards;
 }
 
 .check-slider-section.switched:before {
@@ -118,21 +73,6 @@ body {
 
 .check-slider-section.switched .hand, .check-slider-section.switched .clip-hand-wrapper, .check-slider-section.switched .clip-hand {
     display: none;
-}
-
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 calc(var(--second-size) * -1.3) rgba(255, 255, 255, 0.6),
-        0 0 0 0 rgba(255, 255, 255, 0.3);
-    }
-    90% {
-        box-shadow: 0 0 0 calc(var(--second-size) * 2) rgba(255, 255, 255, 0.0),
-        0 0 0 calc(var(--third-size) * 1.2) rgba(255, 255, 255, 0.0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.0),
-        0 0 0 0 rgba(255, 255, 255, 0.0);
-    }
 }
 
 @keyframes slider-switch {
@@ -163,7 +103,7 @@ body {
         width: var(--start-width);
     }
     to {
-        box-shadow: 0 0 0 0 var(--background-color), inset 0 0 0 0 var(--background-color), inset 0 0 0 50px white;
+        box-shadow: 0 0 0 0 var(--background-color), inset 0 0 0 0 var(--background-color), inset 0 0 0 50rem white;
         transform: translateX(0);
         width: var(--slider-border-width);
     }
@@ -171,10 +111,14 @@ body {
 
 @keyframes slider-border-switch-decoration {
     from {
-        opacity: 0;
+        /*opacity: 0;*/
+        border-left: 0rem solid white;
+        transform: rotate(0) translate(0,0);
     }
     to {
-        opacity: 1;
+        /*opacity: 1;*/
+        border-left: 25rem solid white;
+        transform: rotate(-60deg) translate(-7rem,-14rem);
     }
 }
 
@@ -208,12 +152,12 @@ body {
     width: 100rem;
     height: 100rem;
     pointer-events: none;
-    background: transparent url(hand.svg) no-repeat center/contain;
+    background: transparent url(../img/hand.svg) no-repeat center/contain;
     animation: hand-over 5s infinite;
 }
 
 .check-slider-section .clip-hand .hand {
-    background: transparent url(hand-invert.svg) no-repeat center/contain;
+    background: transparent url(../img/hand-invert.svg) no-repeat center/contain;
 }
 
 @keyframes hand-over {

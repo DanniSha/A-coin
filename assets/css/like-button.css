@@ -1,0 +1,33 @@
+.like {
+    --circle-size: 200rem;
+    --second-size: 33px;
+    --third-size: calc(var(--second-size) + 44px);
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.64);
+    z-index: 10;
+
+    animation: pulse 2s infinite;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.active .like {
+    animation: waves 2s forwards;
+}
+
+.icon-heart{
+    background-image: url(../img/heart-outline.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    /*background: black;*/
+    width: 80%;
+    height: 80%;
+}
+
+[id='toggle-heart']:checked + .icon-heart{
+    background-image: url(../img/heart-fill.svg);
+}

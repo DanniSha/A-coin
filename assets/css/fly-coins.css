@@ -1,0 +1,125 @@
+.coins-section {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 50%;
+    width: 100%;
+    /*opacity: 0.3;*/
+}
+
+.coins-section .coin {
+
+    --size: 100em;
+    --x: 0px;
+    --y: 0px;
+    --rotation: 0;
+    --animation-duration: 0.8;
+    --animation-delay: 0;
+    --center-position: calc(50% - (var(--size) / 2));
+    /*--positin-delay-cofficient: 0;*/
+    /*--position-delay: calc((var(--animation-delay) * var(--positin-delay-cofficient)));*/
+    /*--animation-step: 0;*/
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    background: url(../img/coin1.svg) no-repeat center/contain;
+    border-radius: 50%;
+    bottom: 0;
+    left: var(--center-position);
+    opacity: 0;
+    will-change: transform, opacity;
+    counter-increment: coins;
+}
+
+.coins-section .coin:nth-child(1) {
+    --rotation: 30;
+    --x: calc(var(--size) * -0.5);
+}
+
+.coins-section .coin:nth-child(2) {
+    --rotation: 75;
+    --animation-delay: 0.1;
+    --x: calc(var(--size) * 1);
+}
+
+.coins-section .coin:nth-child(3) {
+    --rotation: 120;
+    --animation-delay: 0.2;
+    --x: calc(var(--size) * -.5);
+}
+
+.coins-section .coin:nth-child(4) {
+    --rotation: 45;
+    --animation-delay: 0.3;
+    --x: calc(var(--size) * .5);
+}
+
+.coins-section .coin:nth-child(5) {
+    --rotation: 10;
+    --animation-delay: 0.4;
+    --x: calc(var(--size) * -1);
+}
+
+.coins-section .coin:nth-child(6) {
+    --rotation: 250;
+    --animation-delay: 0.5;
+    --x: calc(var(--size) * .5);
+}
+
+.coins-section .coin:nth-child(7) {
+    --rotation: 190;
+    --animation-delay: 0.6;
+    --x: calc(var(--size) * -.5);
+}
+
+.coins-section .coin:nth-child(8) {
+    --rotation: 60;
+    --animation-delay: 0.7;
+    --x: calc(var(--size) * .5);
+}
+
+.coins-section .coin:nth-child(9) {
+    --rotation: 180;
+    --animation-delay: 0.8;
+    --x: calc(var(--size) * -1);
+}
+
+.coins-section .coin:nth-child(10) {
+    --rotation: 120;
+    --animation-delay: 0.9;
+    --x: calc(var(--size) * 1);
+}
+
+.coins-section .coin:nth-child(11) {
+    --rotation: 300;
+    --animation-delay: 1;
+    --x: calc(var(--size) * -1);
+}
+
+.coins-section .coin:nth-child(12) {
+    --rotation: 50;
+    --animation-delay: 1.1;
+    --x: calc(var(--size) * 0);
+}
+
+.active .coins-section .coin {
+    animation: coins-fly linear calc(var(--animation-duration) * 1s) calc(var(--animation-delay) * 1s) forwards;
+}
+
+@keyframes coins-fly {
+    0% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(1) rotate(calc((var(--rotation) + 179) * 1deg));
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(calc(var(--x) / 4 * 3), -20vh) scale(0.8) rotate(calc((var(--rotation) + 270) * 1deg));
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(0, -40vh) scale(0.5) rotate(calc((var(--rotation) + 358) * 1deg));
+    }
+}

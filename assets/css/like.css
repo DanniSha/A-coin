@@ -1,0 +1,141 @@
+/* line 44, ../sass/like.scss */
+.like {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    font: 60rem verdana, sans-serif;
+}
+
+/* line 53, ../sass/like.scss */
+[id='toggle-heart'] {
+    position: absolute;
+    left: -100vw;
+}
+
+/* line 57, ../sass/like.scss */
+[id='toggle-heart']:checked + label {
+    color: white;
+    filter: none;
+    will-change: font-size;
+    animation: heart 1s cubic-bezier(0.17, 0.89, 0.32, 1.49);
+}
+
+/* line 63, ../sass/like.scss */
+[id='toggle-heart']:checked + label:before, [id='toggle-heart']:checked + label:after {
+    animation: inherit;
+    animation-timing-function: ease-out;
+}
+
+/* line 68, ../sass/like.scss */
+[id='toggle-heart']:checked + label:before {
+    will-change: transform, border-width, border-color;
+    animation-name: bubble;
+}
+
+/* line 73, ../sass/like.scss */
+[id='toggle-heart']:checked + label:after {
+    will-change: opacity, box-shadow;
+    animation-name: sparkles;
+}
+
+/* line 79, ../sass/like.scss */
+[id='toggle-heart']:focus + label {
+    text-shadow: 0 0 3px white, 0 1px 1px white, 0 -1px 1px white, 1px 0 1px white, -1px 0 1px white;
+}
+
+/* line 86, ../sass/like.scss */
+[for='toggle-heart'] {
+    align-self: center;
+    position: relative;
+    color: white;
+    font-size: 2em;
+    filter: grayscale(1);
+    user-select: none;
+    cursor: pointer;
+}
+
+/* line 95, ../sass/like.scss */
+[for='toggle-heart']:before, [for='toggle-heart']:after {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    content: '';
+}
+
+/* line 104, ../sass/like.scss */
+[for='toggle-heart']:before {
+    box-sizing: border-box;
+    margin: -135rem;
+    border: solid 135rem white;
+    width: 270rem;
+    height: 270rem;
+    transform: scale(0);
+}
+
+/* line 113, ../sass/like.scss */
+[for='toggle-heart']:after {
+    margin: -11.25rem;
+    width: 22.5rem;
+    height: 22.5rem;
+    box-shadow: 19.48557rem -183.375rem 0 -12.375rem #ffffff,
+-19.48557rem -160.875rem 0 -12.375rem #ffffff,
+155.5174rem -99.09801rem 0 -12.375rem #ffffff,
+113.62808rem -115.53836rem 0 -12.375rem #ffffff,
+174.44146rem 59.8018rem 0 -12.375rem #ffffff,
+161.17748rem 16.80103rem 0 -12.375rem #ffffff,
+62.00754rem 173.66964rem 0 -12.375rem #ffffff,
+87.35694rem 136.48889rem 0 -12.375rem #ffffff,
+-97.11932rem 156.76069rem 0 -12.375rem #ffffff,
+-52.24515rem 153.39784rem 0 -12.375rem #ffffff,
+-183.11335rem 21.80775rem 0 -12.375rem #ffffff,
+-152.50558rem 54.79508rem 0 -12.375rem #ffffff,
+-131.21929rem -129.56688rem 0 -12.375rem #ffffff,
+-137.92619rem -85.06949rem 0 -12.375rem #ffffff;
+}
+
+@keyframes heart {
+    0%,
+17.5% {
+        font-size: 0;
+    }
+}
+
+@keyframes bubble {
+    15% {
+        transform: scale(1);
+        border-color: white;
+        border-width: 135rem;
+    }
+    30%,
+100% {
+        transform: scale(1);
+        border-color: white;
+        border-width: 0;
+    }
+}
+
+@keyframes sparkles {
+    0%,
+20% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+        box-shadow: 19.48557rem -146.25rem 0 0rem #ffffff,
+-19.48557rem -123.75rem 0 0rem #ffffff,
+126.49191rem -75.95095rem 0 0rem #ffffff,
+84.60259rem -92.3913rem 0 0rem #ffffff,
+138.24726rem 51.54071rem 0 0rem #ffffff,
+124.98328rem 8.53994rem 0 0rem #ffffff,
+45.8996rem 140.22117rem 0 0rem #ffffff,
+71.24901rem 103.04042rem 0 0rem #ffffff,
+-81.01139rem 123.31222rem 0 0rem #ffffff,
+-36.13722rem 119.94937rem 0 0rem #ffffff,
+-146.91915rem 13.54666rem 0 0rem #ffffff,
+-116.31138rem 46.53399rem 0 0rem #ffffff,
+-102.1938rem -106.41982rem 0 0rem #ffffff,
+-108.9007rem -61.92243rem 0 0rem #ffffff;
+    }
+}

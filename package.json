@@ -1,0 +1,22 @@
+{
+  "name": "a-coin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "assets/js/main.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PonomareVlad/A-coin.git"
+  },
+  "author": "PonomareVlad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PonomareVlad/A-coin/issues"
+  },
+  "homepage": "https://github.com/PonomareVlad/A-coin#readme",
+  "dependencies": {
+    "ispinner.css": "^1.2.1"
+  }
+}

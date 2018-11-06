@@ -11,15 +11,15 @@
     height: var(--size);
     width: var(--size);
     align-self: center;
-    background: var(--background-color) url(../coin2.svg) no-repeat center/contain;
+    background: #00a3e0 url(../img/coin2.svg) no-repeat center/contain;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+    z-index: 15;
 
-    -webkit-mask-image: url(../coin2.svg);
-    mask-image: url(../coin2.svg);
+    -webkit-mask-image: url(../img/coin2.svg);
+    mask-image: url(../img/coin2.svg);
     mask-mode: alpha;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
@@ -88,6 +88,17 @@
     background: radial-gradient(ellipse at center, rgba(0, 163, 224, 0) 0%, rgba(0, 163, 224, 1) 65%, rgba(0, 163, 224, 1) 100%);
 }
 
+.coin-cover-section .background-rays-mask:after {
+    --slide-switch-delay: 1;
+    box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 1);
+    animation: background-rays-mask-opacity 2s calc(var(--slide-switch-delay) * 1s) forwards;
+}
+
+.unload.coin-cover-section .background-rays-mask:after{
+    box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 0);
+    animation: background-rays-mask-opacity-exit .5s 0 forwards;
+}
+
 .coin-cover-section .background-rays {
     /*background: repeating-conic-gradient(hsla(0,0%,100%,.2) 0 15deg, hsla(0,0%,100%,0) 0 30deg);*/
     position: absolute;
@@ -101,8 +112,8 @@
     width: 0;
     height: 0;
     list-style: none;
-    -webkit-animation: 10s rotate infinite linear;
-    animation: 10s rotate infinite linear;
+    -webkit-animation: 20s rotate infinite linear;
+    animation: 20s rotate infinite linear;
 }
 
 .coin-cover-section .background-rays LI /*,
@@ -166,23 +177,19 @@
     }
 }
 
-.button-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 20;
-    margin-top: 385rem;
+@keyframes background-rays-mask-opacity {
+    from {
+        box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 1);
+    }
+    to {
+        box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 0);
+    }
 }
-
-.button-section button {
-    -webkit-appearance: none;
-    border: none;
-    background: white;
-    color: var(--background-color);
-    width: 880rem;
-    height: 128rem;
-    border-radius: 128rem;
-    font-size: 32rem;
-    text-transform: uppercase;
-    font-weight: 600;
+@keyframes background-rays-mask-opacity-exit {
+    from {
+        box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 0);
+    }
+    to {
+        box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 1);
+    }
 }
