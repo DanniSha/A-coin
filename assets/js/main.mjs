@@ -2,7 +2,7 @@ import ACoinPresentation from './presentations/a-coin.mjs';
 
 export default class TerminalApp {
 
-    constructor({htmlPath = 'assets/html/', idleTimeout = 10000} = {}) {
+    constructor({htmlPath = 'assets/html/', idleTimeout = 20000} = {}) {
 
         this.TerminalApp = this;
 
