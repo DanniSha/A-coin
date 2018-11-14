@@ -44,7 +44,12 @@ export default class Presentation {
         if (historyPush && (!history.state || history.state.slide !== slide || history.state.presentation !== this.data.id))
             history.pushState({slide: id, presentation: this.data.id}, this.data.title, `?${this.data.id}#${id}`);
 
-        if (slide.source) document.body.innerHTML = slide.source;
+        if (slide.source) this.TerminalApp.root.innerHTML = slide.source;
+
+        document.body.querySelectorAll('[data-bind]').forEach(element =>
+        {
+            this.data[element.dataset.bind] ? element.innerHTML = this.data[element.dataset.bind] : null
+        });
 
         if (slide.init) return await slide.init().finally((result) => {
             delete this.TerminalApp.changingSlide;

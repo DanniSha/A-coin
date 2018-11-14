@@ -1,0 +1,19 @@
+section.subtitle{
+    font-size: 40rem;
+    line-height: 1.1;
+    margin-bottom: 120rem;
+}
+section.title{
+    font-size: 60rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+section.text{
+    font-size: 48rem;
+    line-height: 1.17;
+}
+section.small-text{
+    font-size: 36rem;
+    line-height: 1.33;
+}

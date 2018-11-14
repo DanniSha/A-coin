@@ -1,8 +1,9 @@
 import ACoinPresentation from './presentations/a-coin.mjs';
+import RatingPresentation from './presentations/rating.mjs';
 
 export default class TerminalApp {
 
-    constructor({htmlPath = 'assets/html/', idleTimeout = 20000} = {}) {
+    constructor({htmlPath = 'assets/html/', idleTimeout = 20000000} = {}) {
 
         this.TerminalApp = this;
 
@@ -13,7 +14,7 @@ export default class TerminalApp {
 
         this.presentations = {
             'a-coin': new ACoinPresentation({TerminalApp: this}),
-            // 'rating': new RatingPresentation(),
+            // 'rating': new RatingPresentation({TerminalApp: this}),
             // 'services': new ServicesPresentation()
         };
 
@@ -31,23 +32,39 @@ export default class TerminalApp {
         return await this.showTerminalMenu(false);
     }
 
+    async prepareWrapper() {
+        const rootWrapper = document.createElement('main');
+        this.root = rootWrapper;
+        const footerWrapper = document.createElement('footer');
+        const fullscreenToggleButton = document.createElement('button');
+        fullscreenToggleButton.classList.toggle('fullscreen',true);
+        fullscreenToggleButton.onclick = this.toggleFullScreen;
+        footerWrapper.appendChild(fullscreenToggleButton);
+        document.body.innerHTML = '';
+        document.body.appendChild(rootWrapper);
+        document.body.appendChild(footerWrapper);
+    }
+
     async preparePresentations() {
         const PreparingQueue = await Promise.all(Object.entries(this.presentations).map(async presentationItem => {
             presentationItem[1].data.id = presentationItem[0];
             return await presentationItem[1].preloadSlides()
         }));
+        await this.prepareWrapper();
         return await this.init();
     }
 
     async showTerminalMenu(historyPush = true) {
 
         const menuDescription = document.createElement('section');
-        menuDescription.classList.add('description-section');
+        menuDescription.classList.add('title');
+        menuDescription.style.marginTop = '400rem';
         menuDescription.setAttribute('data-slide-swith', '');
-        menuDescription.innerHTML = `<div class="header">Сервисное меню</div>`;
+        menuDescription.innerText = 'Сервисное меню';
 
         const menuWrapper = document.createElement('section');
-        menuWrapper.classList.add('button-section');
+        menuWrapper.classList.add('buttons');
+        menuWrapper.style.marginTop = '223rem';
         menuWrapper.setAttribute('data-slide-swith', '');
 
         Object.entries(this.presentations).forEach((presentation => {
@@ -61,9 +78,9 @@ export default class TerminalApp {
 
         if (historyPush) history.pushState(null, this.data.title, '');
 
-        document.body.appendChild(menuDescription);
+        this.root.appendChild(menuDescription);
 
-        document.body.appendChild(menuWrapper);
+        this.root.appendChild(menuWrapper);
 
     }
 
@@ -94,12 +111,33 @@ export default class TerminalApp {
 
         if (this.TerminalApp.currentSlide && this.TerminalApp.currentSlide.exit) await this.TerminalApp.currentSlide.exit();
 
-        if (emptyBody) document.body.innerHTML = '';
+        if (emptyBody) this.root.innerHTML = '';
 
         this.currentSlide = false;
         this.currentSlideId = false;
 
         return await true;
+    }
+
+    toggleFullScreen() {
+        if (!document.fullscreenElement &&    // alternative standard method
+            !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        } else {
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+        }
     }
 
 }

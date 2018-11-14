@@ -1,0 +1,31 @@
+section.wallet{
+    position: absolute;
+    top: var(--root-padding-height);
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    vertical-align: middle;
+
+    text-align: center;
+    font-size: 48rem;
+    line-height: 1.17;
+    font-weight: bold;
+}
+
+section.wallet:before{
+    content: '';
+    height: 56rem;
+    width: 56rem;
+    background: url(../img/wallet.svg) no-repeat center/contain;
+    margin-right: 20rem;
+}
+
+.wallet.collected-animation{
+    position: relative;
+    left: unset;
+    top: unset;
+    margin-top: 419rem;
+}

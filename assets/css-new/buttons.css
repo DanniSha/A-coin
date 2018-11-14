@@ -1,0 +1,13 @@
+section.buttons button {
+    -webkit-appearance: none;
+    border: none;
+    background: white;
+    color: var(--background-color);
+    width: 880rem;
+    height: 128rem;
+    border-radius: 128rem;
+    font-size: 32rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 40rem;
+}

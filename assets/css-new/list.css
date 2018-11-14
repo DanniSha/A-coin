@@ -1,0 +1,39 @@
+.list-section {
+    --height: auto;
+    --topContentPadding: none;
+    height: var(--height);
+    min-height: var(--height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 100rem;
+    padding-right: 0;
+}
+
+.list-section .list-item {
+    display: flex;
+    flex-direction: row;
+    /*display: inline-block;*/
+    width: 100%;
+    margin-bottom: 40rem;
+    font-size: 48rem;
+    line-height: 1.17;
+}
+
+.list-section > *:first-child {
+    margin-top: var(--topContentPadding);
+}
+
+.list-section .list-item span {
+    vertical-align: middle;
+    align-self: center;
+}
+
+.list-section .list-item img {
+    --size: 112rem;
+    min-width: var(--size);
+    height: var(--size);
+    /*background-color: rgba(255, 255, 255, 0.6);*/
+    margin-right: 64rem;
+    /*border-radius: 50%;*/
+}
