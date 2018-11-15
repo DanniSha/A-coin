@@ -6,13 +6,13 @@ let win;
 
 function createWindow () {
     // Создаёт окно браузера.
-    win = new BrowserWindow({ width: 800, height: 600 });
+    win = new BrowserWindow({ width: 540, height: 960, icon: 'assets/img/coin1.svg'});
 
     // и загрузит index.html приложение.
     win.loadFile('index.html');
 
     // Открыть средства разработчика.
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 
     // Вызывается, когда окно будет закрыто.
     win.on('closed', () => {

@@ -5,6 +5,9 @@
   "main": "index.mjs",
   "scripts": {
     "start": "electron .",
+    "build": "electron-packager /Users/ponomarevlad/Documents/Repositories/A-coin Acoin --all --overwrite --icon=assets/img/app",
+    "build-mac": "electron-packager /Users/ponomarevlad/Documents/Repositories/A-coin Acoin --platform=darwin --arch=x64 --overwrite --icon=assets/img/app.icns",
+    "build-win32": "electron-packager /Users/ponomarevlad/Documents/Repositories/A-coin Acoin --platform=win32 --arch=ia32 --overwrite --icon=assets/img/app.ico",
     "bundle": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

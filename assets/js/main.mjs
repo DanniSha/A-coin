@@ -3,7 +3,7 @@ import RatingPresentation from './presentations/rating.mjs';
 
 export default class TerminalApp {
 
-    constructor({htmlPath = 'assets/html/', idleTimeout = 20000000} = {}) {
+    constructor({htmlPath = 'assets/html/', idleTimeout = 20000} = {}) {
 
         this.TerminalApp = this;
 
