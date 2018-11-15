@@ -1,3 +1,18 @@
+.input-interactive {
+    --height: 1151rem;
+    --topContentPadding: 788rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: var(--height);
+    min-height: var(--height);
+}
+
+.input-interactive .flying-particles {
+    --height: var(--topContentPadding);
+    --horisontal-offset: 20vw;
+}
+
 .input-section {
     position: relative;
     display: flex;
@@ -12,7 +27,9 @@
     line-height: 1.4;
     padding: 24rem;
     padding-left: 43rem;
-    transition: all .5s;
+
+    margin-top: var(--topContentPadding);
+    transition: all .3s;
     z-index: 10;
     /*transition: background 2s ease-out;*/
 }
@@ -30,8 +47,8 @@
 
 .input-section button {
     --circle-size: 200rem;
-    --second-size: 33px;
-    --third-size: calc(var(--second-size) + 44px);
+    --wave-size: 33rem;
+    --wide-wave-size: calc(var(--wave-size) + 44rem);
 
     -webkit-appearance: none;
     border: none;
@@ -50,7 +67,7 @@
     min-width: 284rem;
     padding-left: 24rem;
     color: rgba(255, 255, 255, 0);
-    /*background: rgba(255, 255, 255, 0);*/
+    background: rgba(255, 255, 255, 0);
 }
 
 .active .input-section:before {
@@ -58,5 +75,5 @@
 }
 
 .active .input-section button {
-    animation: waves 2s .3s forwards;
+    animation: waves 2s .2s forwards;
 }

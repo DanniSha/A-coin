@@ -1,5 +1,7 @@
 .sparks-section {
     position: absolute;
+    top: calc(56rem / 2);
+    /*left: 0%;*/
 }
 
 .sparks-section .spark {

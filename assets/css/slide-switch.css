@@ -1,69 +1,94 @@
-[data-slide-swith] {
-    --slide-switch-delay: 0;
-    --slide-switch-exit-delay: var(--slide-switch-delay);
-    opacity: 0;
-    animation: slide-switch-enter 1s calc(var(--slide-switch-delay) * 1s) forwards;
+[data-slide-swith-enter], [data-slide-swith-exit] {
+    --from-x: 0;
+    --from-y: 0;
+    --to-x: 0;
+    --to-y: 0;
+    --from-opacity: 0;
+    --to-opacity: 0;
+    --animation-duration: .5s;
+    --animation-exit-duration: var(--animation-duration);
+    --animation-delay: 0s;
+    --animation-exit-delay: var(--animation-delay);
 }
 
-[data-slide-swith][data-slide-switch-enter="false"]{
-    opacity: initial;
-    animation: none;
+:not(.unload) [data-slide-swith-enter="from-right"], [data-slide-swith-enter="from-right"]:not(.unload) {
+    --from-x: 100vw;
+    --to-opacity: 1;
+    opacity: var(--from-opacity);
+    animation: slide-switch-fly-animation var(--animation-duration) var(--animation-delay) forwards;
 }
 
-.unload[data-slide-swith]:not([data-slide-switch-exit="false"]), .unload [data-slide-swith]:not([data-slide-switch-exit="false"]) {
-    /*--slide-switch-delay: 0;*/
-    opacity: 1;
-    animation: slide-switch-exit 1s calc(var(--slide-switch-exit-delay) * 1s) forwards;
+:not(.unload) [data-slide-swith-enter="from-bottom"], [data-slide-swith-enter="from-bottom"]:not(.unload) {
+    --from-y: 100vw;
+    --to-opacity: 1;
+    opacity: var(--from-opacity);
+    animation: slide-switch-fly-animation var(--animation-duration) var(--animation-delay) forwards;
 }
 
-[data-slide-swith="opacity"] {
-    animation: slide-switch-opacity-enter 1s calc(var(--slide-switch-delay) * 1s) forwards;
+:not(.unload) [data-slide-swith-enter="from-top"], [data-slide-swith-enter="from-top"]:not(.unload) {
+    --from-y: -100vw;
+    --to-opacity: 1;
+    opacity: var(--from-opacity);
+    animation: slide-switch-fly-animation var(--animation-duration) var(--animation-delay) forwards;
 }
 
-[data-slide-swith="opacity"][data-slide-switch-enter="false"] {
-    animation: none;
+[data-slide-swith-exit] {
+
 }
 
-.unload[data-slide-swith="opacity"]:not([data-slide-switch-exit="false"]), .unload [data-slide-swith="opacity"]:not([data-slide-switch-exit="false"]) {
-    animation: slide-switch-opacity-exit 1s calc(var(--slide-switch-exit-delay) * 1s) forwards;
+.unload[data-slide-swith-exit="to-left"], .unload [data-slide-swith-exit="to-left"] {
+    --from-x: 0;
+    --to-x: -100vw;
+    --from-opacity: 1;
+    --to-opacity: 0;
+    opacity: var(--from-opacity);
+    animation: slide-switch-fly-animation-exit var(--animation-exit-duration) var(--animation-exit-delay) forwards;
 }
 
-@keyframes slide-switch-enter {
+.unload[data-slide-swith-exit="to-top"], .unload [data-slide-swith-exit="to-top"] {
+    --to-y: -100vw;
+    --from-opacity: 1;
+    --to-opacity: 0;
+    opacity: var(--from-opacity);
+    animation: slide-switch-fly-animation-exit var(--animation-exit-duration) var(--animation-exit-delay) forwards;
+}
+
+.unload[data-slide-swith-exit="opacity"], .unload [data-slide-swith-exit="opacity"] {
+    --from-opacity: 1;
+    --to-opacity: 0;
+    opacity: var(--from-opacity);
+    animation: slide-switch-opacity var(--animation-exit-duration) var(--animation-exit-delay) forwards;
+}
+
+@keyframes slide-switch-opacity {
     from {
-        opacity: 0;
-        transform: translateX(100vw);
+        opacity: var(--from-opacity);
+
     }
     to {
-        opacity: 1;
-        transform: translateX(0);
+        opacity: var(--to-opacity);
+
     }
 }
 
-@keyframes slide-switch-exit {
+@keyframes slide-switch-fly-animation {
     from {
-        opacity: 1;
-        transform: translateX(0);
+        transform: translate(var(--from-x), var(--from-y));
+        opacity: var(--from-opacity);
     }
     to {
-        opacity: 0;
-        transform: translateX(-100vw);
+        transform: translate(var(--to-x), var(--to-y));
+        opacity: var(--to-opacity);
     }
 }
 
-@keyframes slide-switch-opacity-enter {
+@keyframes slide-switch-fly-animation-exit {
     from {
-        opacity: 0;
+        transform: translate(var(--from-x), var(--from-y));
+        opacity: var(--from-opacity);
     }
     to {
-        opacity: 1;
-    }
-}
-
-@keyframes slide-switch-opacity-exit {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
+        transform: translate(var(--to-x), var(--to-y));
+        opacity: var(--to-opacity);
     }
 }

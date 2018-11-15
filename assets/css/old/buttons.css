@@ -1,4 +1,13 @@
-section.buttons button {
+.button-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    /*margin-top: 385rem;*/
+}
+
+.button-section button {
     -webkit-appearance: none;
     border: none;
     background: white;

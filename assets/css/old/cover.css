@@ -1,26 +1,22 @@
-section.coin-cover {
-    --section-height: 1104rem;
-    --coin-size: 323rem;
+.coin-cover-section {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height: var(--section-height);
-    min-height: var(--section-height);
-    width: 100%;
+    position: relative;
 }
 
-section.coin-cover .coin {
-    margin-top: 395rem;
-    /*margin-left: calc((var(--coin-size) / 2) * -1);*/
-    height: var(--coin-size);
-    width: var(--coin-size);
+.coin-cover-section .coin {
+    --size: 323rem;
+    height: var(--size);
+    width: var(--size);
     align-self: center;
     background: #00a3e0 url(../img/coin2.svg) no-repeat center/contain;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 20;
+    z-index: 15;
 
     -webkit-mask-image: url(../img/coin2.svg);
     mask-image: url(../img/coin2.svg);
@@ -33,7 +29,7 @@ section.coin-cover .coin {
     mask-position: center;
 }
 
-section.coin-cover .coin-blink {
+.coin-cover-section .coin-blink {
     width: 100%;
     height: 20%;
     background: white;
@@ -55,65 +51,62 @@ section.coin-cover .coin-blink {
     }
 }
 
-section.coin-cover .background-rays-mask {
+.coin-cover-section .background-rays-mask {
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
     overflow: hidden;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
 }
 
-section.coin-cover .background-rays-mask:before {
+.coin-cover-section .background-rays-mask:before {
     content: '';
     display: block;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     left: calc(50% - (330rem / 2));
-    /*top: calc(50% - (330rem / 2));*/
-    top: calc(392rem + var(--root-padding-height));
+    top: calc(50% - (330rem / 2));
     right: 0;
-    /*bottom: 0;*/
+    bottom: 0;
     width: 330rem;
     height: 330rem;
     border-radius: 50%;
     background: var(--background-color);
 }
 
-section.coin-cover .background-rays-mask:after {
-    --size: 3000rem;
+.coin-cover-section .background-rays-mask:after {
+    --size: 2500rem;
     content: '';
     display: block;
-    position: fixed;
+    position: absolute;
     z-index: 10;
     left: calc(50% - (var(--size) / 2));
-    /*top: calc(50% - (var(--size) / 2));*/
-    top: calc(395rem + var(--root-padding-height) + (var(--coin-size) / 2) - (var(--size) / 2));
+    top: calc(50% - (var(--size) / 2));
     right: 0;
-    /*bottom: 0;*/
+    bottom: 0;
     width: var(--size);
     height: var(--size);
     background: radial-gradient(ellipse at center, rgba(0, 163, 224, 0) 0%, rgba(0, 163, 224, 1) 65%, rgba(0, 163, 224, 1) 100%);
 }
 
-section.coin-cover .background-rays-mask:after {
+.coin-cover-section .background-rays-mask:after {
     --slide-switch-delay: 1;
     box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 1);
-    animation: background-rays-mask-opacity 2s 0 forwards;
+    animation: background-rays-mask-opacity 2s calc(var(--slide-switch-delay) * 1s) forwards;
 }
 
-section.coin-cover.unload .background-rays-mask:after {
+.unload.coin-cover-section .background-rays-mask:after{
     box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 0);
     animation: background-rays-mask-opacity-exit .5s 0 forwards;
 }
 
-section.coin-cover .background-rays {
+.coin-cover-section .background-rays {
     /*background: repeating-conic-gradient(hsla(0,0%,100%,.2) 0 15deg, hsla(0,0%,100%,0) 0 30deg);*/
     position: absolute;
     /*z-index: 1;*/
     left: -1em;
     right: -1em;
-    top: calc(395rem + var(--root-padding-height) + (var(--coin-size) / 2));
-    /*bottom: -1em;*/
+    top: -1em;
+    bottom: -1em;
     margin: auto;
     padding: 0;
     width: 0;
@@ -123,7 +116,7 @@ section.coin-cover .background-rays {
     animation: 20s rotate infinite linear;
 }
 
-section.coin-cover .background-rays LI /*,
+.coin-cover-section .background-rays LI /*,
 .background-rays LI:before,*/
     /*.background-rays LI:after*/
 {
@@ -136,7 +129,7 @@ section.coin-cover .background-rays LI /*,
     font-size: 70rem;
 }
 
-section.coin-cover .background-rays LI {
+.coin-cover-section .background-rays LI {
     left: -20em;
     top: 50%;
     margin-top: -4em;
@@ -144,17 +137,35 @@ section.coin-cover .background-rays LI {
     transform: rotate(0.1deg);
 }
 
-section.coin-cover .background-rays LI:nth-child(2) {
+/*.background-rays LI:before,
+.background-rays LI:after {
+    left: -20em;
+    top: -1.2em;
+    display: block;
+    content: "";
+}
+
+.background-rays LI:before {
+    -webkit-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+
+.background-rays LI:after {
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+}*/
+
+.coin-cover-section .background-rays LI:nth-child(2) {
     /*-webkit-transform: rotate(15deg);*/
     transform: rotate(45deg);
 }
 
-section.coin-cover .background-rays LI:nth-child(3) {
+.coin-cover-section .background-rays LI:nth-child(3) {
     /*-webkit-transform: rotate(30deg);*/
     transform: rotate(90deg);
 }
 
-section.coin-cover .background-rays LI:nth-child(4) {
+.coin-cover-section .background-rays LI:nth-child(4) {
     /*-webkit-transform: rotate(45deg);*/
     transform: rotate(135deg);
 }
@@ -174,7 +185,6 @@ section.coin-cover .background-rays LI:nth-child(4) {
         box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 0);
     }
 }
-
 @keyframes background-rays-mask-opacity-exit {
     from {
         box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 0);

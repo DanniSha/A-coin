@@ -1,9 +1,53 @@
-/* line 44, ../sass/like.scss */
+section.like-interactive{
+    height: 1151rem;
+    min-height: 1151rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section.like-interactive .flying-particles{
+    --height: 904rem;
+}
+
 .like {
+    --circle-size: 200rem;
+    --wave-size: 33rem;
+    --wide-wave-size: calc(var(--wave-size) + 44rem);
+
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.64);
+    z-index: 10;
+
+    animation: pulse 2s infinite;
+    user-select: none;
+    -webkit-user-select: none;
+
     display: flex;
     justify-content: center;
     margin: 0;
+    margin-top: 704rem;
     font: 60rem verdana, sans-serif;
+}
+
+.active .like {
+    animation: waves 2s forwards;
+}
+
+.icon-heart {
+    background-image: url(../img/heart-outline.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    /*background: black;*/
+    width: 80%;
+    height: 80%;
+}
+
+[id='toggle-heart']:checked + .icon-heart {
+    background-image: url(../img/heart-fill.svg);
 }
 
 /* line 53, ../sass/like.scss */
@@ -80,24 +124,24 @@
     width: 22.5rem;
     height: 22.5rem;
     box-shadow: 19.48557rem -183.375rem 0 -12.375rem #ffffff,
--19.48557rem -160.875rem 0 -12.375rem #ffffff,
-155.5174rem -99.09801rem 0 -12.375rem #ffffff,
-113.62808rem -115.53836rem 0 -12.375rem #ffffff,
-174.44146rem 59.8018rem 0 -12.375rem #ffffff,
-161.17748rem 16.80103rem 0 -12.375rem #ffffff,
-62.00754rem 173.66964rem 0 -12.375rem #ffffff,
-87.35694rem 136.48889rem 0 -12.375rem #ffffff,
--97.11932rem 156.76069rem 0 -12.375rem #ffffff,
--52.24515rem 153.39784rem 0 -12.375rem #ffffff,
--183.11335rem 21.80775rem 0 -12.375rem #ffffff,
--152.50558rem 54.79508rem 0 -12.375rem #ffffff,
--131.21929rem -129.56688rem 0 -12.375rem #ffffff,
--137.92619rem -85.06949rem 0 -12.375rem #ffffff;
+    -19.48557rem -160.875rem 0 -12.375rem #ffffff,
+    155.5174rem -99.09801rem 0 -12.375rem #ffffff,
+    113.62808rem -115.53836rem 0 -12.375rem #ffffff,
+    174.44146rem 59.8018rem 0 -12.375rem #ffffff,
+    161.17748rem 16.80103rem 0 -12.375rem #ffffff,
+    62.00754rem 173.66964rem 0 -12.375rem #ffffff,
+    87.35694rem 136.48889rem 0 -12.375rem #ffffff,
+    -97.11932rem 156.76069rem 0 -12.375rem #ffffff,
+    -52.24515rem 153.39784rem 0 -12.375rem #ffffff,
+    -183.11335rem 21.80775rem 0 -12.375rem #ffffff,
+    -152.50558rem 54.79508rem 0 -12.375rem #ffffff,
+    -131.21929rem -129.56688rem 0 -12.375rem #ffffff,
+    -137.92619rem -85.06949rem 0 -12.375rem #ffffff;
 }
 
 @keyframes heart {
     0%,
-17.5% {
+    17.5% {
         font-size: 0;
     }
 }
@@ -109,7 +153,7 @@
         border-width: 135rem;
     }
     30%,
-100% {
+    100% {
         transform: scale(1);
         border-color: white;
         border-width: 0;
@@ -118,24 +162,24 @@
 
 @keyframes sparkles {
     0%,
-20% {
+    20% {
         opacity: 0;
     }
     25% {
         opacity: 1;
         box-shadow: 19.48557rem -146.25rem 0 0rem #ffffff,
--19.48557rem -123.75rem 0 0rem #ffffff,
-126.49191rem -75.95095rem 0 0rem #ffffff,
-84.60259rem -92.3913rem 0 0rem #ffffff,
-138.24726rem 51.54071rem 0 0rem #ffffff,
-124.98328rem 8.53994rem 0 0rem #ffffff,
-45.8996rem 140.22117rem 0 0rem #ffffff,
-71.24901rem 103.04042rem 0 0rem #ffffff,
--81.01139rem 123.31222rem 0 0rem #ffffff,
--36.13722rem 119.94937rem 0 0rem #ffffff,
--146.91915rem 13.54666rem 0 0rem #ffffff,
--116.31138rem 46.53399rem 0 0rem #ffffff,
--102.1938rem -106.41982rem 0 0rem #ffffff,
--108.9007rem -61.92243rem 0 0rem #ffffff;
+        -19.48557rem -123.75rem 0 0rem #ffffff,
+        126.49191rem -75.95095rem 0 0rem #ffffff,
+        84.60259rem -92.3913rem 0 0rem #ffffff,
+        138.24726rem 51.54071rem 0 0rem #ffffff,
+        124.98328rem 8.53994rem 0 0rem #ffffff,
+        45.8996rem 140.22117rem 0 0rem #ffffff,
+        71.24901rem 103.04042rem 0 0rem #ffffff,
+        -81.01139rem 123.31222rem 0 0rem #ffffff,
+        -36.13722rem 119.94937rem 0 0rem #ffffff,
+        -146.91915rem 13.54666rem 0 0rem #ffffff,
+        -116.31138rem 46.53399rem 0 0rem #ffffff,
+        -102.1938rem -106.41982rem 0 0rem #ffffff,
+        -108.9007rem -61.92243rem 0 0rem #ffffff;
     }
 }

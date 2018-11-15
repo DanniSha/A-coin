@@ -1,8 +1,4 @@
 .list-section {
-    --height: auto;
-    --topContentPadding: none;
-    height: var(--height);
-    min-height: var(--height);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,10 +16,6 @@
     line-height: 1.17;
 }
 
-.list-section > *:first-child {
-    margin-top: var(--topContentPadding);
-}
-
 .list-section .list-item span {
     vertical-align: middle;
     align-self: center;
@@ -33,7 +25,7 @@
     --size: 112rem;
     min-width: var(--size);
     height: var(--size);
-    /*background-color: rgba(255, 255, 255, 0.6);*/
+    background-color: rgba(255, 255, 255, 0.6);
     margin-right: 64rem;
-    /*border-radius: 50%;*/
+    border-radius: 50%;
 }
