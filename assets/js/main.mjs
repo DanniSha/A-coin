@@ -4,7 +4,7 @@ import RatingPresentation from './presentations/rating.mjs';
 
 export default class TerminalApp {
 
-    constructor({htmlPath = 'assets/html/', idleTimeout = 20000} = {}) {
+    constructor({htmlPath = 'assets/html/', idleTimeout = localStorage.getItem('debug') ? false : 20000} = {}) {
 
         this.TerminalApp = this;
 
@@ -38,7 +38,7 @@ export default class TerminalApp {
         this.root = rootWrapper;
         const footerWrapper = document.createElement('footer');
         const fullscreenToggleButton = document.createElement('button');
-        fullscreenToggleButton.classList.toggle('fullscreen',true);
+        fullscreenToggleButton.classList.toggle('fullscreen', true);
         fullscreenToggleButton.onclick = this.toggleFullScreen;
         footerWrapper.appendChild(fullscreenToggleButton);
         document.body.innerHTML = '';
@@ -98,8 +98,8 @@ export default class TerminalApp {
     }
 
     resetIdleTimer() {
-        clearTimeout(this.idleTimeout);
-        this.idleTimeout = setTimeout(this.triggerIdleTimer.bind(this), this.parameters.idleTimeout);
+        if (this.idleTimeout) clearTimeout(this.idleTimeout);
+        if (this.parameters.idleTimeout) this.idleTimeout = setTimeout(this.triggerIdleTimer.bind(this), this.parameters.idleTimeout);
     }
 
     triggerIdleTimer() {
