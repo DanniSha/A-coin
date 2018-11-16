@@ -34,7 +34,7 @@
     /*transition: background 2s ease-out;*/
 }
 
-.input-section:before {
+.input-section .content {
     content: 'Комментарий, например)';
     position: absolute;
     left: 43rem;

@@ -15,7 +15,7 @@ export default class Acoin extends Presentation {
 
         this.slides = {
             'intro': {
-                html: 'rating/intro',
+                html: 'a-coin/intro',
                 init: async () => await document.querySelector('.switch').addEventListener('click', async () => this.sleep(2000).then(async () => await this.slide('cover'))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));

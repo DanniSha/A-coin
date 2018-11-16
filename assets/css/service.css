@@ -33,13 +33,13 @@ section.modal-interactive{
     /*transition: background 2s ease-out;*/
 }
 
-.modal-section:before {
+.modal-section .content {
     content: 'Очень крутая услуга, на которую ты хочешь записаться';
     position: absolute;
     z-index: 20;
-    left: 130rem;
-    top: 110rem;
-    width: 630rem;
+    left: 120rem;
+    top: 109rem;
+    width: 640rem;
     text-align: center;
     /*overflow: hidden;*/
     /*text-overflow: clip;*/

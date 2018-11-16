@@ -150,20 +150,23 @@ section.intro-switch.unload ~ section.coin-cover.switch-animation .coin {
     /*--coin-size: 323rem;
     height: var(--coin-size);
     width: var(--coin-size);*/
+    --coin-size: 634rem;
+    height: var(--coin-size);
+    width: var(--coin-size);
     animation: coin-cover-switch-animation 1s .5s forwards;
 }
 
 @keyframes coin-cover-switch-animation {
     from {
-        --coin-size: 634rem;
-        height: var(--coin-size);
-        width: var(--coin-size);
-        transform: translateY(0);
+        /*--coin-size: 634rem;*/
+        /*height: var(--coin-size);*/
+        /*width: var(--coin-size);*/
+        transform: translateY(0) scale(1);
     }
     to {
-        --coin-size: 323rem;
-        height: var(--coin-size);
-        width: var(--coin-size);
-        transform: translateY(140rem);
+        /*--coin-size: 323rem;*/
+        /*height: var(--coin-size);*/
+        /*width: var(--coin-size);*/
+        transform: translateY(-15rem) scale(0.51);
     }
 }

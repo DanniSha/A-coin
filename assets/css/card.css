@@ -1,0 +1,47 @@
+.card{
+    --circle-size: 164rem;
+    --padding: 44rem;
+    position: relative;
+    height: 252rem;
+    width: 100%;
+    padding:var(--padding);
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: flex-end;
+    font-size: 44px;
+    line-height: 1.27;
+
+}
+
+.card:before{
+    content: '';
+    display: block;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    margin-right: var(--padding);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2) url(../img/user.svg) no-repeat center/30%;
+}
+
+.card:after{
+    content: 'Это ты, Username';
+    position: absolute;
+    top: 58rem;
+    left: calc(var(--circle-size) + (var(--padding)*2));
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.card .left-counter, .right-counter{
+    border-radius: 32px;
+    width: 132rem;
+    height: 64rem;
+    line-height: 64rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.4);
+    margin-right: 20rem;
+    margin-bottom: 16rem;
+}
+
+.card .right-counter{
+    background: rgba(255, 255, 255, 0.2);
+}

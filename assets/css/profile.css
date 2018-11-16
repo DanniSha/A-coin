@@ -1,0 +1,67 @@
+section.profile {
+    --height: auto;
+    --topContentPadding: auto;
+    --circle-size: 320rem;
+    --counterPadding: 300rem;
+    min-height: var(--height);
+    height: var(--height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 44rem;
+    line-height: 1.27;
+}
+
+section.small-profile {
+    --circle-size: 164rem;
+    --counterPadding: 200rem;
+}
+
+.profile.profileOnTop {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    --topContentPadding: 144rem;
+}
+
+section.profile .profile-icon {
+    position: relative;
+    margin-top: var(--topContentPadding);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4) url(../img/user.svg) no-repeat center/30%;
+}
+
+section.profile .profile-icon .left-counter {
+    position: absolute;
+    margin-left: calc(var(--counterPadding) * -1);
+    border-radius: 32px;
+    width: 132rem;
+    height: 64rem;
+    line-height: 64rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+section.profile .profile-icon .right-counter {
+    position: absolute;
+    margin-left: var(--counterPadding);
+    border-radius: 32px;
+    width: 132rem;
+    height: 64rem;
+    line-height: 64rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+section.profile .caption {
+    text-align: center;
+    margin-top: 50rem;
+    color: rgba(255, 255, 255, 0.4);
+}

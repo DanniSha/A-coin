@@ -70,7 +70,7 @@ section.coin-cover .background-rays-mask:before {
     z-index: 1;
     left: calc(50% - (330rem / 2));
     /*top: calc(50% - (330rem / 2));*/
-    top: calc(392rem + var(--root-padding-height));
+    top: calc(391rem + var(--root-padding-height));
     right: 0;
     /*bottom: 0;*/
     width: 330rem;
@@ -98,12 +98,12 @@ section.coin-cover .background-rays-mask:after {
 section.coin-cover .background-rays-mask:after {
     --slide-switch-delay: 1;
     box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 1);
-    animation: background-rays-mask-opacity 2s 0 forwards;
+    animation: background-rays-mask-opacity 2s forwards;
 }
 
 section.coin-cover.unload .background-rays-mask:after {
     box-shadow: inset 0 0 0 100vmax rgba(0, 163, 224, 0);
-    animation: background-rays-mask-opacity-exit .5s 0 forwards;
+    animation: background-rays-mask-opacity-exit .5s forwards;
 }
 
 section.coin-cover .background-rays {

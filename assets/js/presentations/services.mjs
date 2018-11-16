@@ -7,71 +7,71 @@ export default class Rating extends Presentation {
         super(props);
 
         Object.assign(this.data, {
-            title: 'Рейтинг на PROFILES',
-            index: '02',
-            header: 'Каждая оценка повышает рейтинг',
+            title: 'Услуги на PROFILES',
+            index: '03',
+            header: 'Продвигай свои услуги',
             entrySlide: 'intro'
         });
 
         this.slides = {
             'intro': {
-                html: 'rating/intro',
-                init: async () => await document.querySelector('.switch').addEventListener('click', async () => this.sleep(5000).then(async () => await this.slide('start'))),
-                exit: async () => {
-                    document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
-                    return await this.sleep(1000);
-                }
-            },
-            'start': {
-                html: 'rating/start',
-                init: async () => await document.querySelector('#whatIs').addEventListener('click', async () => this.slide('whatIs')),
+                html: 'services/intro',
+                init: async () => await document.querySelector('.switch').addEventListener('click', async () => this.sleep(5000).then(async () => await this.slide('whatIs'))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
                 }
             },
             'whatIs': {
-                html: 'rating/whatIs',
-                init: async () => await document.querySelector('#whatInfluences').addEventListener('click', async () => this.slide('whatInfluences')),
+                html: 'services/whatIs',
+                init: async () => await document.querySelector('#accreditation').addEventListener('click', async () => this.slide('accreditation')),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
                 }
             },
-            'whatInfluences': {
-                html: 'rating/whatInfluences',
-                init: async () => await document.querySelector('#writePosts').addEventListener('click', async () => this.slide('writePosts')),
+            'accreditation': {
+                html: 'services/accreditation',
+                init: async () => await document.querySelector('#form').addEventListener('click', async () => this.slide('form')),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
                 }
             },
-            'writePosts': {
-                html: 'rating/writePosts',
-                init: async () => await document.querySelector('#answers').addEventListener('click', async () => this.slide('answers')),
+            'form': {
+                html: 'services/form',
+                init: async () => await document.querySelector('#done').addEventListener('click', async () => this.slide('done')),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
                 }
             },
-            'answers': {
-                html: 'rating/answers',
-                init: async () => await document.querySelector('#sendComment').addEventListener('click', async () => this.slide('comments')),
+            'done': {
+                html: 'services/done',
+                init: async () => await document.querySelector('#acoins').addEventListener('click', async () => this.slide('acoins')),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
                 }
             },
-            'comments': {
-                html: 'rating/comments',
-                init: async () => await document.querySelector('#sendComment').addEventListener('click', async () => this.slide('collected')),
+            'acoins': {
+                html: 'services/acoins',
+                init: async () => await document.querySelector('#promo').addEventListener('click', async () => this.slide('promo')),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
                 }
             },
-            'collected': {
-                html: 'rating/collected',
+            'promo': {
+                html: 'services/promo',
+                init: async () => await document.querySelector('#leads').addEventListener('click', async () => this.slide('leads')),
+                exit: async () => {
+                    document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
+                    return await this.sleep(1000);
+                }
+            },
+            'leads': {
+                html: 'services/leads',
                 init: async () => await document.querySelector('#more').addEventListener('click', async () => this.slide('more')),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));

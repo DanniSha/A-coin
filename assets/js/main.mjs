@@ -1,9 +1,10 @@
 import ACoinPresentation from './presentations/a-coin.mjs';
 import RatingPresentation from './presentations/rating.mjs';
+// import ServicesPresentation from './presentations/services.mjs';
 
 export default class TerminalApp {
 
-    constructor({htmlPath = 'assets/html/', idleTimeout = 20000} = {}) {
+    constructor({htmlPath = 'assets/html/', idleTimeout = 20000000} = {}) {
 
         this.TerminalApp = this;
 
@@ -14,8 +15,8 @@ export default class TerminalApp {
 
         this.presentations = {
             'a-coin': new ACoinPresentation({TerminalApp: this}),
-            // 'rating': new RatingPresentation({TerminalApp: this}),
-            // 'services': new ServicesPresentation()
+            'rating': new RatingPresentation({TerminalApp: this}),
+            // 'services': new ServicesPresentation({TerminalApp: this})
         };
 
         this.preparePresentations();
