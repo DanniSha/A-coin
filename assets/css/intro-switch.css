@@ -22,7 +22,7 @@ section.intro-switch .switch {
     background: white;
     /*box-shadow: 0 0 0 0 var(--accent-color);*/
     transform: translateX(calc(((var(--switch-width) / 2) - (var(--circle-size) / 2)) * -1));
-    animation: pulse 2s infinite;
+    animation: pulse 4s 4s infinite;
 }
 
 section.intro-switch.active .switch {
@@ -124,120 +124,6 @@ section.intro-switch.active .switch-frame {
     100% {
         box-shadow: 0 0 0 calc((212rem - var(--size)) / 2) var(--accent-color);
         width: calc(var(--switch-width) - (var(--border-size) * 2));
-    }
-}
-
-.check-slider-section .clip-hand-wrapper {
-    z-index: 2;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-}
-
-.check-slider-section .clip-hand {
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    -webkit-clip-path: circle(calc(var(--circle-size) / 2) at calc(var(--circle-x-position) + 1px) 50%);
-}
-
-.check-slider-section .hand {
-    --positin-top: 300;
-    --positin-left: 300;
-
-    z-index: 1;
-    position: absolute;
-    top: calc(50% + var(--positin-top) * 1rem);
-    left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
-    width: 100rem;
-    height: 100rem;
-    pointer-events: none;
-    background: transparent url(../img/hand.svg) no-repeat center/contain;
-    animation: hand-over 5s infinite;
-}
-
-.check-slider-section .clip-hand .hand {
-    background: transparent url(../img/hand-invert.svg) no-repeat center/contain;
-}
-
-@keyframes hand-over {
-    0% {
-        opacity: 0;
-        --positin-top: 300;
-        --positin-left: 300;
-        top: calc(50% + var(--positin-top) * 1rem);
-        left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
-    }
-
-    10% {
-        opacity: 0;
-        --positin-top: 300;
-        --positin-left: 300;
-        top: calc(50% + var(--positin-top) * 1rem);
-        left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
-    }
-
-    20% {
-        opacity: 1;
-        --positin-top: 100;
-        --positin-left: 100;
-        top: calc(50% + var(--positin-top) * 1rem);
-        left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
-    }
-
-    40% {
-        opacity: 1;
-        --positin-top: 100;
-        --positin-left: 100;
-        top: calc(50% + var(--positin-top) * 1rem);
-        left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
-    }
-
-    45% {
-        opacity: 1;
-        --positin-top: 0;
-        --positin-left: 0;
-        top: calc(50% + var(--positin-top) * 1rem);
-        left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
-    }
-
-    50% {
-        opacity: 1;
-        --positin-top: 100;
-        --positin-left: 100;
-        top: calc(50% + var(--positin-top) * 1rem);
-        left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
-    }
-
-    55% {
-        opacity: 1;
-        --positin-top: 0;
-        --positin-left: 0;
-        top: calc(50% + var(--positin-top) * 1rem);
-        left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
-    }
-
-    65% {
-        opacity: 0;
-    }
-
-    70% {
-        opacity: 0;
-        --positin-top: 300;
-        --positin-left: 300;
-        top: calc(50% + var(--positin-top) * 1rem);
-        left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
-    }
-
-    100% {
-        opacity: 0;
-        --positin-top: 300;
-        --positin-left: 300;
-        top: calc(50% + var(--positin-top) * 1rem);
-        left: calc(var(--circle-x-position) + var(--positin-left) * 1rem);
     }
 }
 

@@ -21,7 +21,7 @@ section.like-interactive .flying-particles{
     background-color: rgba(255, 255, 255, 0.64);
     z-index: 10;
 
-    animation: pulse 2s infinite;
+    animation: pulse 4s 4s infinite;
     user-select: none;
     -webkit-user-select: none;
 
@@ -30,6 +30,7 @@ section.like-interactive .flying-particles{
     margin: 0;
     margin-top: 704rem;
     font: 60rem verdana, sans-serif;
+    position: relative;
 }
 
 .active .like {

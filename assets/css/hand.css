@@ -1,0 +1,38 @@
+.hand {
+    --rotate: -40deg;
+    --offset-x: 200rem;
+    --offset-y: 200rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    justify-self: flex-end;
+    align-self: flex-end;
+    height: 100rem;
+    width: 100rem;
+    background: url(../img/modernHand.svg) no-repeat center/contain;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(var(--offset-x), var(--offset-y)) rotate(var(--rotate));
+    animation: hand-over 4s 4s infinite;
+}
+
+@keyframes hand-over {
+    0% {
+        opacity: .5;
+        transform: translate(var(--offset-x), var(--offset-y)) rotate(var(--rotate));
+    }
+    10%, 30% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(var(--rotate));
+    }
+    40%, 100% {
+        opacity: .5;
+        transform: translate(var(--offset-x), var(--offset-y)) rotate(var(--rotate));
+    }
+}
+
+.active.hand, .active .hand {
+    animation: none;
+    opacity: 0;
+    transition: all .5s;
+}

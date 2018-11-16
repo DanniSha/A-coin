@@ -1,0 +1,28 @@
+section.question{
+    display: inline-block;
+    vertical-align: middle;
+    height: 128rem;
+    width: 836rem;
+    border-radius: 64rem;
+    align-self: flex-end;
+    font-size: 40rem;
+    padding: 0 45rem;
+    line-height: 128rem;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+section.question:before{
+    --size: 100rem;
+    content: '';
+    position: absolute;
+    margin-top: calc(128rem + 44rem);
+    margin-left: calc(-45rem - 44rem);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: white url(../img/invertedUser.svg) no-repeat center/50%;
+}
+
+section.question:after{
+
+}
