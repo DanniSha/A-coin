@@ -55,6 +55,7 @@ section.like-interactive .flying-particles{
 [id='toggle-heart'] {
     position: absolute;
     left: -100vw;
+    opacity: 0;
 }
 
 /* line 57, ../sass/like.scss */

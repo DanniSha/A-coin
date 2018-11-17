@@ -1,6 +1,6 @@
 import ACoinPresentation from './presentations/a-coin.mjs';
 import RatingPresentation from './presentations/rating.mjs';
-// import ServicesPresentation from './presentations/services.mjs';
+import ServicesPresentation from './presentations/services.mjs';
 
 export default class TerminalApp {
 
@@ -16,7 +16,7 @@ export default class TerminalApp {
         this.presentations = {
             'a-coin': new ACoinPresentation({TerminalApp: this}),
             'rating': new RatingPresentation({TerminalApp: this}),
-            // 'services': new ServicesPresentation({TerminalApp: this})
+            'services': new ServicesPresentation({TerminalApp: this})
         };
 
         this.preparePresentations();
