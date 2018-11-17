@@ -90,7 +90,7 @@ section.modal-interactive{
     /*background: rgba(255, 255, 255, 0);*/
 }
 
-.active .modal-section:before {
+.active .modal-section .content {
     opacity: 0;
 }
 
