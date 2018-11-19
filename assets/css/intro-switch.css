@@ -1,11 +1,13 @@
 section.intro-switch {
+    --height: 969rem;
+    --topContentPadding: 492rem;
     --circle-size: 158rem;
     --switch-width: 348rem;
     --wave-size: 33rem;
     --wide-wave-size: calc(var(--wave-size) + 44rem);
     position: relative;
-    height: 969rem;
-    min-height: 969rem;
+    height: var(--height);
+    min-height: var(--height);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +17,7 @@ section.intro-switch {
 section.intro-switch .switch {
     position: absolute;
     z-index: 15;
-    margin-top: 492rem;
+    margin-top: var(--topContentPadding);
     width: var(--circle-size);
     height: var(--circle-size);
     border-radius: 50%;
@@ -29,7 +31,7 @@ section.intro-switch.active .switch {
     animation: switch 1s forwards;
 }
 
-section.intro-switch.active .switch:before {
+section.intro-switch .switch:before {
     --shadow-offset: 20rem;
     content: '';
     position: absolute;
@@ -37,8 +39,11 @@ section.intro-switch.active .switch:before {
     width: var(--circle-size);
     height: var(--circle-size);
     border-radius: 50%;
-    background-color: white;
     transform: translate(calc(var(--shadow-offset) * -1), var(--shadow-offset)) /*rotate(-60deg)*/;
+}
+
+section.intro-switch.active .switch:before {
+    background-color: white;
     animation: switch-shadow 1s forwards;
 }
 
@@ -169,4 +174,21 @@ section.intro-switch.unload ~ section.coin-cover.switch-animation .coin {
         /*width: var(--coin-size);*/
         transform: translateY(-15rem) scale(0.51);
     }
+}
+
+section.intro-switch.reverse .switch {
+    animation: switch 1s 1s reverse backwards;
+}
+
+section.intro-switch.reverse .switch:before {
+    background-color: white;
+    animation: switch-shadow 1s 1s reverse forwards;
+}
+
+section.intro-switch.reverse .switch:after {
+    animation: switch-color 1s 1s reverse backwards;
+}
+
+section.intro-switch.reverse .switch-frame {
+    animation: switch-frame 1s 1s reverse backwards;
 }

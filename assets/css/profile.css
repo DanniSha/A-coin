@@ -51,7 +51,7 @@ section.profile .profile-icon .left-counter {
     background: rgba(255, 255, 255, 0.4);
 }
 
-section.profile.animation .profile-icon .left-counter,section.profile.animation .profile-icon .right-counter{
+section.profile.animation .profile-icon .left-counter, section.profile.animation .profile-icon .right-counter {
     opacity: 0;
     transform: translateX(var(--enter-offset));
     animation: counter-enter 1s .2s forwards;
@@ -70,15 +70,15 @@ section.profile .profile-icon .right-counter {
 }
 
 @keyframes counter-enter {
-    from{
+    from {
         opacity: 0;
         transform: translateX(var(--enter-offset));
     }
-    50%{
+    50% {
         opacity: 0;
         transform: translateX(calc(var(--enter-offset) / 2));
     }
-    to{
+    to {
         opacity: 1;
         transform: translateX(0);
     }
@@ -90,19 +90,42 @@ section.profile .caption {
     color: rgba(255, 255, 255, 0.4);
 }
 
-section.profile.animation .caption{
+section.profile.animation .caption {
     animation: caption-enter .5s .3s forwards;
     opacity: 0;
     transform: translateY(-100rem);
 }
 
 @keyframes caption-enter {
-    from{
+    from {
         opacity: 0;
         transform: translateY(-100rem);
     }
-    to{
+    to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.profile.small-profile.card-transformation-animation,.profile.small-profile.card-transformation-animation * {
+    transition: all .5s;
+}
+.profile.small-profile.card-transformation-animation {
+    transform: translateY(320rem);
+}
+
+.profile.small-profile.card-transformation-animation .profile-icon {
+    transform: translateX(calc(-50vw + 100rem + (164rem / 2)));
+}
+
+.profile.small-profile.card-transformation-animation .profile-icon .left-counter {
+    transform: translate(calc(200rem + (164rem / 2) + 44rem + (132rem / 2)), calc((164rem / 2) - 16rem - (64rem / 2)));
+}
+
+.profile.small-profile.card-transformation-animation .profile-icon .right-counter {
+    transform: translate(calc(-200rem + (164rem / 2) + 44rem + (132rem / 2) + 132rem + 20rem), calc((164rem / 2) - 16rem - (64rem / 2)));
+}
+
+.profile.small-profile.card-transformation-animation .caption {
+    transform: translate(calc(-50vw + 309rem + (350rem / 2)), calc(-50rem - 164rem + 16rem));
 }

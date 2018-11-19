@@ -1,6 +1,7 @@
 .flying-particles {
     --height: 100%;
     --horisontal-offset: 0px;
+    --target-horisontal-offset: 0px;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -112,17 +113,29 @@
 
 @keyframes coins-fly {
     0% {
-        opacity: 0;
-        transform: translate(calc(var(--x) + var(--horisontal-offset)), var(--y)) scale(1) rotate(calc((var(--rotation) + 179) * 1deg));
+        opacity: 1;
+        transform: translate(calc(var(--x) + var(--horisontal-offset)), var(--y)) rotate(calc((var(--rotation) + 179) * 1deg)) scale(0);
     }
 
     50% {
         opacity: 1;
-        transform: translate(calc(((var(--x) + var(--horisontal-offset)) / 4 * 3)), calc(var(--height) * -.4)) scale(0.8) rotate(calc((var(--rotation) + 270) * 1deg));
+        transform: translate(calc(((var(--target-horisontal-offset) - var(--x) + var(--horisontal-offset)) / 4 * 3)), calc(var(--height) * -.4)) rotate(calc((var(--rotation) + 270) * 1deg)) scale(1);
     }
 
     100% {
-        opacity: 0;
-        transform: translate(0, calc(var(--height) * -.9)) scale(0.5) rotate(calc((var(--rotation) + 358) * 1deg));
+        opacity: 1;
+        transform: translate(var(--target-horisontal-offset), calc(var(--height) * -.9)) rotate(calc((var(--rotation) + 358) * 1deg)) scale(0);
     }
+}
+
+.flying-particles.double > *:nth-child(odd) {
+    --horisontal-offset: -100rem;
+    --target-horisontal-offset: -200rem;
+    background: url(../img/thumb_up.svg) no-repeat center/contain;
+}
+
+.flying-particles.double > *:nth-child(even) {
+    --horisontal-offset: 100rem;
+    --target-horisontal-offset: 200rem;
+    background: url(../img/favorite.svg) no-repeat center/contain;
 }

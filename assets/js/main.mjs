@@ -68,12 +68,14 @@ export default class TerminalApp {
         menuWrapper.style.marginTop = '223rem';
         menuWrapper.setAttribute('data-slide-swith', '');
 
-        Object.entries(this.presentations).forEach((presentation => {
+        await this.renderPresentationsLinks({targetNode: menuWrapper});
+
+        /*Object.entries(this.presentations).forEach((presentation => {
             const presentationLink = document.createElement('button');
             presentationLink.innerText = presentation[1].data.title;
             presentationLink.onclick = this.initPresentation.bind(this, presentation[0], null, true);
             menuWrapper.appendChild(presentationLink);
-        }));
+        }));*/
 
         await this.unloadPage();
 
@@ -95,6 +97,17 @@ export default class TerminalApp {
 
         return this.presentations[presentation].init(slide, historyPush);
 
+    }
+
+    async renderPresentationsLinks({targetNode, excludePresentation = false} = {}) {
+        targetNode.innerHtml = '';
+        Object.entries(this.TerminalApp.presentations).forEach((presentation => {
+            if (presentation[0] === excludePresentation) return;
+            const presentationLink = document.createElement('button');
+            presentationLink.innerText = presentation[1].data.title;
+            presentationLink.onclick = this.TerminalApp.initPresentation.bind(this, presentation[0], null, true);
+            targetNode.appendChild(presentationLink);
+        }));
     }
 
     resetIdleTimer() {

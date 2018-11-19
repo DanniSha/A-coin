@@ -46,8 +46,7 @@ export default class Presentation {
 
         if (slide.source) this.TerminalApp.root.innerHTML = slide.source;
 
-        document.body.querySelectorAll('[data-bind]').forEach(element =>
-        {
+        document.body.querySelectorAll('[data-bind]').forEach(element => {
             this.data[element.dataset.bind] ? element.innerHTML = this.data[element.dataset.bind] : null
         });
 

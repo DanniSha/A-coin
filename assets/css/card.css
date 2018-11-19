@@ -1,4 +1,5 @@
 .card {
+    --title: 'Это ты, Username';
     --circle-size: 164rem;
     --padding: 44rem;
     position: relative;
@@ -24,7 +25,7 @@
 }
 
 .card:not(.service-card):after {
-    content: 'Это ты, Username';
+    content: var(--title);
     position: absolute;
     top: 58rem;
     left: calc(var(--circle-size) + (var(--padding) * 2));
@@ -52,6 +53,24 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+}
+
+.card.collected-card {
+    position: absolute;
+    left: 0;
+    top: 420rem;
+    width: calc(100% - (56rem * 2));
+    margin: 0 56rem;
+}
+
+.card.hidden-card{
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.card.hidden-card.show{
+    opacity: 1;
+    transition: opacity .5s;
 }
 
 .card .title {
@@ -104,46 +123,217 @@
 }
 
 .background-cards {
+    --duration: 40s;
+    --count: 19;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     opacity: .5;
+    pointer-events: none;
 }
 
 .background-cards > * {
+    --delay: 0;
+    --opacity-order: 0;
     position: absolute;
     width: 968rem;
     left: 56rem;
-    top:-200vh;
-    animation: background-cards-scroll linear 10s infinite;
+    top: -200vh;
 }
 
-.background-cards > *:nth-child(1){top:-192rem;}
-.background-cards > *:nth-child(2){top:100rem;}
-.background-cards > *:nth-child(3){top:392rem;}
-.background-cards > *:nth-child(4){top:684rem;}
-.background-cards > *:nth-child(5){top:976rem;}
-.background-cards > *:nth-child(6){top:1268rem;}
-.background-cards > *:nth-child(7){top:1560rem;}
-.background-cards > *:nth-child(8){top:1852rem;}
+.background-cards > *:nth-child(1) {
+    top: -192rem;
+    --opacity-order: 3;
+}
+
+.background-cards > *:nth-child(2) {
+    top: 100rem;
+    --opacity-order: 2;
+}
+
+.background-cards > *:nth-child(3) {
+    top: 392rem;
+    --opacity-order: 1;
+}
+
+.background-cards > *:nth-child(4) {
+    top: 684rem;
+    --opacity-order: 2;
+}
+
+.background-cards > *:nth-child(5) {
+    top: 976rem;
+    --opacity-order: 3;
+}
+
+.background-cards > *:nth-child(6) {
+    top: 1268rem;
+    --opacity-order: 4;
+}
+
+.background-cards > *:nth-child(7) {
+    top: 1560rem;
+    --opacity-order: 5;
+}
+
+.background-cards > *:nth-child(8) {
+    top: 1852rem;
+    --opacity-order: 6;
+}
+
+.background-cards > *:nth-child(9) {
+    top: -484rem;
+    --delay: 0;
+}
+
+.background-cards > *:nth-child(10) {
+    top: -484rem;
+    --delay: 1;
+}
+
+.background-cards > *:nth-child(11) {
+    top: -484rem;
+    --delay: 2;
+}
+
+.background-cards > *:nth-child(12) {
+    top: -484rem;
+    --delay: 3;
+}
+
+.background-cards > *:nth-child(13) {
+    top: -484rem;
+    --delay: 4;
+}
+
+.background-cards > *:nth-child(14) {
+    top: -484rem;
+    --delay: 5;
+}
+
+.background-cards > *:nth-child(15) {
+    top: -484rem;
+    --delay: 6;
+}
+
+.background-cards > *:nth-child(16) {
+    top: -484rem;
+    --delay: 7;
+}
+
+.background-cards > *:nth-child(17) {
+    top: -484rem;
+    --delay: 8;
+}
+
+.background-cards > *:nth-child(18) {
+    top: -484rem;
+    --delay: 9;
+}
+
+.background-cards > *:nth-child(19) {
+    top: -484rem;
+    --delay: 10;
+}
+
+.background-cards:not(.animation) > * {
+    opacity: 0;
+    animation: background-cards-enter .2s calc(var(--opacity-order) * .2s) forwards;
+}
+
+@keyframes background-cards-enter {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.background-cards.animation > * {
+    --item-time: calc(var(--duration) / (var(--count) - .4));
+    animation: background-cards-scroll linear var(--duration) calc(var(--item-time) * var(--delay)) infinite;
+}
 
 @keyframes background-cards-scroll {
-    from{
+    from {
         opacity: 1;
         transform: translateY(0);
     }
-    99%{
+    50% {
         opacity: 1;
         transform: translateY(150vh);
     }
-    99.00001%{
+    50.00001% {
         opacity: 0;
         transform: translateY(-150vh);
     }
-    to{
+    50.00002% {
         opacity: 1;
         transform: translateY(-150vh);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.background-cards-top:not(.unload) {
+    position: absolute;
+    bottom: -100rem;
+    left: 0;
+    width: 100%;
+    padding: 0 56rem;
+    z-index: 1;
+    opacity: 0;
+    animation: background-cards-top-animation 5s 1s forwards;
+    pointer-events: none;
+}
+
+.background-cards-top.unload{
+    opacity: .5;
+    transform: translateY(calc(100% - 100vh + 292rem));
+    animation: slide-switch-opacity var(--animation-exit-duration) var(--animation-exit-delay) forwards;
+}
+
+.background-cards-top > * {
+    margin-bottom: 40rem;
+}
+
+@keyframes background-cards-top-animation {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    to {
+        opacity: .5;
+        transform: translateY(calc(100% - 100vh + 292rem));
+    }
+}
+
+.card.top-animation:not(.unload) {
+    opacity: 1;
+    animation: card-top-animation 5s forwards;
+}
+
+.card.top-animation.unload{
+    transform: translateY(-130%);
+    animation: slide-switch-opacity var(--animation-exit-duration) var(--animation-exit-delay) forwards;
+}
+
+@keyframes card-top-animation {
+    0% {
+        transform: none;
+    }
+    /*20%{
+        transform: scale(1.1);
+    }*/
+    50%{
+        transform: scale(1.1) translateY(-80%);
+    }
+    100% {
+        transform: translateY(-130%);
     }
 }

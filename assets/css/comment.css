@@ -13,6 +13,14 @@
     --horisontal-offset: 20vw;
 }
 
+.input-interactive .flying-particles.double > *:nth-child(odd) {
+    --horisontal-offset: calc(25vw - 20rem);
+}
+
+.input-interactive .flying-particles.double > *:nth-child(even) {
+    --horisontal-offset: calc(25vw + 20rem);
+}
+
 .input-section {
     position: relative;
     display: flex;

@@ -7,39 +7,47 @@
     --exit-from-y: 0;
     --exit-to-x: 0;
     --exit-to-y: 0;
-    --from-opacity: 0;
-    --to-opacity: 0;
+    --enter-from-opacity: 0;
+    --enter-to-opacity: 0;
+    --exit-from-opacity: 0;
+    --exit-to-opacity: 0;
     --animation-duration: .5s;
     --animation-exit-duration: var(--animation-duration);
     --animation-delay: 0s;
     --animation-exit-delay: var(--animation-delay);
 }
 
+:not(.unload) [data-slide-swith-enter="opacity"], [data-slide-swith-enter="opacity"]:not(.unload) {
+    --enter-to-opacity: 1;
+    opacity: var(--enter-from-opacity);
+    animation: slide-switch-opacity var(--animation-duration) var(--animation-delay) forwards;
+}
+
 :not(.unload) [data-slide-swith-enter="from-right"], [data-slide-swith-enter="from-right"]:not(.unload) {
     --enter-from-x: 100vw;
-    --to-opacity: 1;
-    opacity: var(--from-opacity);
+    --enter-to-opacity: 1;
+    opacity: var(--enter-from-opacity);
     animation: slide-switch-fly-animation var(--animation-duration) var(--animation-delay) forwards;
 }
 
 :not(.unload) [data-slide-swith-enter="from-left"], [data-slide-swith-enter="from-left"]:not(.unload) {
     --enter-from-x: -100vw;
-    --to-opacity: 1;
-    opacity: var(--from-opacity);
+    --enter-to-opacity: 1;
+    opacity: var(--enter-from-opacity);
     animation: slide-switch-fly-animation var(--animation-duration) var(--animation-delay) forwards;
 }
 
 :not(.unload) [data-slide-swith-enter="from-bottom"], [data-slide-swith-enter="from-bottom"]:not(.unload) {
     --enter-from-y: 100vw;
-    --to-opacity: 1;
-    opacity: var(--from-opacity);
+    --enter-to-opacity: 1;
+    opacity: var(--enter-from-opacity);
     animation: slide-switch-fly-animation var(--animation-duration) var(--animation-delay) forwards;
 }
 
 :not(.unload) [data-slide-swith-enter="from-top"], [data-slide-swith-enter="from-top"]:not(.unload) {
     --enter-from-y: -100vw;
-    --to-opacity: 1;
-    opacity: var(--from-opacity);
+    --enter-to-opacity: 1;
+    opacity: var(--enter-from-opacity);
     animation: slide-switch-fly-animation var(--animation-duration) var(--animation-delay) forwards;
 }
 
@@ -50,34 +58,45 @@
 .unload[data-slide-swith-exit="to-left"], .unload [data-slide-swith-exit="to-left"] {
     --exit-from-x: 0;
     --exit-to-x: -100vw;
-    --from-opacity: 1;
-    --to-opacity: 0;
-    opacity: var(--from-opacity);
+    --exit-from-opacity: 1;
+    --exit-to-opacity: 0;
+    opacity: var(--exit-from-opacity);
     animation: slide-switch-fly-animation-exit var(--animation-exit-duration) var(--animation-exit-delay) forwards;
 }
 
 .unload[data-slide-swith-exit="to-top"], .unload [data-slide-swith-exit="to-top"] {
     --exit-to-y: -100vw;
-    --from-opacity: 1;
-    --to-opacity: 0;
-    opacity: var(--from-opacity);
+    --exit-from-opacity: 1;
+    --exit-to-opacity: 0;
+    opacity: var(--exit-from-opacity);
     animation: slide-switch-fly-animation-exit var(--animation-exit-duration) var(--animation-exit-delay) forwards;
 }
 
 .unload[data-slide-swith-exit="opacity"], .unload [data-slide-swith-exit="opacity"] {
-    --from-opacity: 1;
-    --to-opacity: 0;
-    opacity: var(--from-opacity);
-    animation: slide-switch-opacity var(--animation-exit-duration) var(--animation-exit-delay) forwards;
+    --exit-from-opacity: 1;
+    --exit-to-opacity: 0;
+    opacity: var(--exit-from-opacity);
+    animation: slide-switch-opacity-exit var(--animation-exit-duration) var(--animation-exit-delay) forwards;
 }
 
 @keyframes slide-switch-opacity {
     from {
-        opacity: var(--from-opacity);
+        opacity: var(--enter-from-opacity);
 
     }
     to {
-        opacity: var(--to-opacity);
+        opacity: var(--enter-to-opacity);
+
+    }
+}
+
+@keyframes slide-switch-opacity-exit {
+    from {
+        opacity: var(--exit-from-opacity);
+
+    }
+    to {
+        opacity: var(--exit-to-opacity);
 
     }
 }
@@ -85,21 +104,21 @@
 @keyframes slide-switch-fly-animation {
     from {
         transform: translate(var(--enter-from-x), var(--enter-from-y));
-        opacity: var(--from-opacity);
+        opacity: var(--enter-from-opacity);
     }
     to {
         transform: translate(var(--enter-to-x), var(--enter-to-y));
-        opacity: var(--to-opacity);
+        opacity: var(--enter-to-opacity);
     }
 }
 
 @keyframes slide-switch-fly-animation-exit {
     from {
         transform: translate(var(--exit-from-x), var(--exit-from-y));
-        opacity: var(--from-opacity);
+        opacity: var(--exit-from-opacity);
     }
     to {
         transform: translate(var(--exit-to-x), var(--exit-to-y));
-        opacity: var(--to-opacity);
+        opacity: var(--exit-to-opacity);
     }
 }

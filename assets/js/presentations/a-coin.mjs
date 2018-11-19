@@ -92,9 +92,13 @@ export default class Acoin extends Presentation {
             },
             'more': {
                 html: 'a-coin/more',
+                init: async () => await this.TerminalApp.renderPresentationsLinks({
+                    targetNode: document.querySelector('#presentationsMenu'),
+                    excludePresentation: this.data.id
+                }),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
-                    return await this.sleep(1000);
+                    return await this.sleep(500);
                 }
             }
         };

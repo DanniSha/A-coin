@@ -1,18 +1,22 @@
-<section class="profile small-profile profileOnTop" data-slide-swith-exit="to-top">
+<section class="profile small-profile profileOnTop" data-slide-swith-exit="opacity" style="--animation-exit-delay: .4s">
     <div class="profile-icon">
         <div class="left-counter">90</div>
         <div class="right-counter">150</div>
     </div>
     <div class="caption">Это ты, Username</div>
 </section>
+<section class="card collected-card hidden-card">
+    <div class="left-counter">150</div>
+    <div class="right-counter">300</div>
+</section>
 <section class="input-interactive" data-slide-swith-enter="from-right" data-slide-swith-exit="to-left">
     <div class="input-section">
         <div class="content">Вот мое мнение на этот счет</div>
         <button id="sendComment">
-            Отправить
+            Отправить<div class="hand" style="bottom: -30rem;right: -30rem;--offset-x: 50rem;--offset-y: 50rem;"></div>
         </button>
     </div>
-    <div class="flying-particles">
+    <div class="flying-particles double">
         <div class="coin"></div>
         <div class="coin"></div>
         <div class="coin"></div>
