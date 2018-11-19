@@ -15,8 +15,8 @@ export default class Rating extends Presentation {
 
         this.slides = {
             'intro': {
-                html: 'services/intro',
-                init: async () => await document.querySelector('.switch').addEventListener('click', async () => this.sleep(5000).then(async () => await this.slide('whatIs'))),
+                html: 'rating/intro',
+                init: async () => await document.querySelector('.switch').addEventListener('click', async () => this.sleep(2000).then(async () => await this.slide('whatIs'))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);

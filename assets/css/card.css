@@ -1,10 +1,10 @@
-.card{
+.card {
     --circle-size: 164rem;
     --padding: 44rem;
     position: relative;
     height: 252rem;
     width: 100%;
-    padding:var(--padding);
+    padding: var(--padding);
     background: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: flex-end;
@@ -13,7 +13,7 @@
 
 }
 
-.card:not(.service-card):before{
+.card:not(.service-card):before {
     content: '';
     display: block;
     width: var(--circle-size);
@@ -23,15 +23,15 @@
     background: rgba(255, 255, 255, 0.2) url(../img/user.svg) no-repeat center/30%;
 }
 
-.card:not(.service-card):after{
+.card:not(.service-card):after {
     content: 'Это ты, Username';
     position: absolute;
     top: 58rem;
-    left: calc(var(--circle-size) + (var(--padding)*2));
+    left: calc(var(--circle-size) + (var(--padding) * 2));
     color: rgba(255, 255, 255, 0.4);
 }
 
-.card .left-counter,.card .right-counter{
+.card .left-counter, .card .right-counter {
     border-radius: 32px;
     width: 132rem;
     height: 64rem;
@@ -42,11 +42,11 @@
     margin-bottom: 16rem;
 }
 
-.card .right-counter{
+.card .right-counter {
     background: rgba(255, 255, 255, 0.2);
 }
 
-.card.service-card{
+.card.service-card {
     height: 464rem;
     padding: 60rem 45rem;
     flex-direction: column;
@@ -54,19 +54,20 @@
     align-items: flex-start;
 }
 
-.card .title{
+.card .title {
     font-size: 60rem;
     line-height: 0.93;
 }
-.card .price span{
+
+.card .price span {
     font-weight: bold;
 }
 
-.card .categories{
+.card .categories {
     display: flex;
 }
 
-.card .categories span{
+.card .categories span {
     display: inline-block;
     padding: 35rem 60rem;
     border-radius: 100rem;
@@ -74,7 +75,7 @@
     margin-right: 16rem;
 }
 
-.card .discount{
+.card .discount {
     position: absolute;
     top: 160rem;
     right: -30rem;
@@ -92,7 +93,7 @@
     background: white url(../img/coin1.svg) no-repeat left 8rem center/72rem;
 }
 
-.card .discount:before{
+.card .discount:before {
     content: '';
     position: absolute;
     width: 2rem;
@@ -100,4 +101,49 @@
     left: 86rem;
     top: 0;
     background-color: rgba(0, 163, 224, 0.4);
+}
+
+.background-cards {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+}
+
+.background-cards > * {
+    position: absolute;
+    width: 968rem;
+    left: 56rem;
+    top:-200vh;
+    animation: background-cards-scroll linear 10s infinite;
+}
+
+.background-cards > *:nth-child(1){top:-192rem;}
+.background-cards > *:nth-child(2){top:100rem;}
+.background-cards > *:nth-child(3){top:392rem;}
+.background-cards > *:nth-child(4){top:684rem;}
+.background-cards > *:nth-child(5){top:976rem;}
+.background-cards > *:nth-child(6){top:1268rem;}
+.background-cards > *:nth-child(7){top:1560rem;}
+.background-cards > *:nth-child(8){top:1852rem;}
+
+@keyframes background-cards-scroll {
+    from{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    99%{
+        opacity: 1;
+        transform: translateY(150vh);
+    }
+    99.00001%{
+        opacity: 0;
+        transform: translateY(-150vh);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(-150vh);
+    }
 }

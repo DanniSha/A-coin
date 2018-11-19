@@ -36,9 +36,11 @@ section.profile .profile-icon {
     height: var(--circle-size);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.4) url(../img/user.svg) no-repeat center/30%;
+    z-index: 10;
 }
 
 section.profile .profile-icon .left-counter {
+    --enter-offset: var(--counterPadding);
     position: absolute;
     margin-left: calc(var(--counterPadding) * -1);
     border-radius: 32px;
@@ -49,7 +51,14 @@ section.profile .profile-icon .left-counter {
     background: rgba(255, 255, 255, 0.4);
 }
 
+section.profile.animation .profile-icon .left-counter,section.profile.animation .profile-icon .right-counter{
+    opacity: 0;
+    transform: translateX(var(--enter-offset));
+    animation: counter-enter 1s .2s forwards;
+}
+
 section.profile .profile-icon .right-counter {
+    --enter-offset: calc(var(--counterPadding) * -1);
     position: absolute;
     margin-left: var(--counterPadding);
     border-radius: 32px;
@@ -60,8 +69,40 @@ section.profile .profile-icon .right-counter {
     background: rgba(255, 255, 255, 0.2);
 }
 
+@keyframes counter-enter {
+    from{
+        opacity: 0;
+        transform: translateX(var(--enter-offset));
+    }
+    50%{
+        opacity: 0;
+        transform: translateX(calc(var(--enter-offset) / 2));
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 section.profile .caption {
     text-align: center;
     margin-top: 50rem;
     color: rgba(255, 255, 255, 0.4);
+}
+
+section.profile.animation .caption{
+    animation: caption-enter .5s .3s forwards;
+    opacity: 0;
+    transform: translateY(-100rem);
+}
+
+@keyframes caption-enter {
+    from{
+        opacity: 0;
+        transform: translateY(-100rem);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

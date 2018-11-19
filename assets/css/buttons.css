@@ -16,6 +16,7 @@ section.buttons button {
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 40rem;
+    cursor: pointer;
 }
 
 section.buttons button.small-button{
