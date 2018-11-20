@@ -95,6 +95,8 @@ export default class TerminalApp {
 
         this.resetIdleTimer();
 
+        if (!this.parameters.defaultPresentation) this.parameters.defaultPresentation = presentation;
+
         return this.presentations[presentation].init(slide, historyPush);
 
     }
@@ -117,7 +119,7 @@ export default class TerminalApp {
 
     triggerIdleTimer() {
         if (this.TerminalApp.currentSlideId && this.TerminalApp.currentPresentation && this.TerminalApp.currentPresentation.data.entrySlide !== this.TerminalApp.currentSlideId)
-            this.initPresentation(this.TerminalApp.currentPresentation.data.id);
+            this.initPresentation(this.parameters.defaultPresentation || this.TerminalApp.currentPresentation.data.id);
         this.resetIdleTimer();
     }
 
