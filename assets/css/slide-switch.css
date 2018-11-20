@@ -72,6 +72,14 @@
     animation: slide-switch-fly-animation-exit var(--animation-exit-duration) var(--animation-exit-delay) forwards;
 }
 
+.unload[data-slide-swith-exit="to-bottom"], .unload [data-slide-swith-exit="to-bottom"] {
+    --exit-to-y: 100vw;
+    --exit-from-opacity: 1;
+    --exit-to-opacity: 0;
+    opacity: var(--exit-from-opacity);
+    animation: slide-switch-fly-animation-exit var(--animation-exit-duration) var(--animation-exit-delay) forwards;
+}
+
 .unload[data-slide-swith-exit="opacity"], .unload [data-slide-swith-exit="opacity"] {
     --exit-from-opacity: 1;
     --exit-to-opacity: 0;
