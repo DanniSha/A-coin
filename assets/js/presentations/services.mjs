@@ -19,7 +19,7 @@ export default class Rating extends Presentation {
                 init: async () => await document.querySelector('.switch').addEventListener('click', async () => this.sleep(2000).then(async () => await this.slide('whatIs'))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
-                    return await this.sleep(1000);
+                    return await this.sleep(500);
                 }
             },
             'whatIs': {
@@ -27,7 +27,7 @@ export default class Rating extends Presentation {
                 init: async () => await document.querySelector('#accreditation').addEventListener('click', async () => this.slide('accreditation')),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
-                    return await this.sleep(1000);
+                    return await this.sleep(500);
                 }
             },
             'accreditation': {
