@@ -26,6 +26,7 @@ section.buttons button.small-button{
     font-size: 32rem;
     line-height: 1.38;
     text-transform: none;
+    position: relative;
 }
 
 section.buttons button.active {
