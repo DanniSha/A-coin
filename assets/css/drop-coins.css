@@ -1,0 +1,53 @@
+.background-drop-coins {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .2;
+    pointer-events: none;
+}
+
+.background-drop-coins .coin {
+    --size: 324rem;
+    --offset-x: 0;
+    --offset-y: 0;
+    --delay: 0;
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    bottom: calc(var(--offset-y) * 1rem);
+    left: calc(var(--offset-x) * 1rem);
+    opacity: 0;
+    background: url(../img/coin1.svg) no-repeat center/contain;
+    animation: drop-coin-animation ease-in .5s calc(var(--delay) * .05s) forwards;
+}
+
+@keyframes drop-coin-animation {
+    from {
+        opacity: 0;
+        transform: translateY(-1920rem);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(calc(((var(--offset-x) + var(--offset-y)) * var(--delay)) * 1deg));
+    }
+}
+
+.background-drop-coins.unload .coin {
+    opacity: 1;
+    transform: rotate(calc(((var(--offset-x) + var(--offset-y)) * var(--delay)) * 1deg));
+    animation: drop-coin-exit-animation ease-in .5s calc(var(--delay) * .01s) forwards;
+}
+
+@keyframes drop-coin-exit-animation {
+    from {
+        opacity: 1;
+        transform: rotate(calc(((var(--offset-x) + var(--offset-y)) * var(--delay)) * 1deg));
+    }
+    to {
+        opacity: 0;
+        transform: translateY(1920rem);
+    }
+}
