@@ -9,7 +9,7 @@ function createWindow () {
     win = new BrowserWindow({ width: 540, height: 960, icon: 'assets/img/coin1.svg'});
 
     // и загрузит index.html приложение.
-    win.loadFile('index.html');
+    win.loadFile('app.html');
 
     // Открыть средства разработчика.
     // win.webContents.openDevTools();
