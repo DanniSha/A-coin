@@ -105,7 +105,7 @@ export default class TerminalApp {
             if (presentation[0] === excludePresentation) return;
             const presentationLink = document.createElement('button');
             presentationLink.innerText = presentation[1].data.title;
-            presentationLink.onclick = this.TerminalApp.initPresentation.bind(this, presentation[0], null, true);
+            presentationLink.onclick = async () => await this.TerminalApp.presentations['a-coin'].prepareAction().then(this.TerminalApp.initPresentation.bind(this, presentation[0], null, true));
             targetNode.appendChild(presentationLink);
         }));
     }

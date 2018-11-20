@@ -16,7 +16,7 @@ export default class Rating extends Presentation {
         this.slides = {
             'intro': {
                 html: 'rating/intro',
-                init: async () => await document.querySelector('.switch').addEventListener('click', async () => this.sleep(2000).then(async () => await this.slide('start'))),
+                init: async () => await document.querySelector('.switch').addEventListener('click', async () => await this.prepareAction().then(async () => this.sleep(2000).then(async () => await this.slide('start')))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -24,7 +24,7 @@ export default class Rating extends Presentation {
             },
             'start': {
                 html: 'rating/start',
-                init: async () => await document.querySelector('#whatIs').addEventListener('click', async () => this.slide('whatIs')),
+                init: async () => await document.querySelector('#whatIs').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('whatIs'))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -33,7 +33,7 @@ export default class Rating extends Presentation {
             'whatIs': {
                 html: 'rating/whatIs',
                 init: async () => {
-                    await document.querySelector('#whatInfluences').addEventListener('click', async () => this.slide('whatInfluences'));
+                    await document.querySelector('#whatInfluences').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('whatInfluences')));
                     await this.sleep(1500).then(() => document.querySelector('.background-cards').classList.toggle('animation', true));
                 },
                 exit: async () => {
@@ -43,7 +43,7 @@ export default class Rating extends Presentation {
             },
             'whatInfluences': {
                 html: 'rating/whatInfluences',
-                init: async () => await document.querySelector('#writePosts').addEventListener('click', async () => this.slide('writePosts')),
+                init: async () => await document.querySelector('#writePosts').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('writePosts'))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -51,12 +51,12 @@ export default class Rating extends Presentation {
             },
             'writePosts': {
                 html: 'rating/writePosts',
-                init: async () => await document.querySelector('#answers').addEventListener('click', async () => {
+                init: async () => await document.querySelector('#answers').addEventListener('click', async () => await this.prepareAction().then(async () => {
                     document.querySelector('.modal-interactive').classList.toggle('active');
                     this.animateValueDelay('.left-counter', 0, 50, 1000, 500);
                     this.animateValueDelay('.right-counter', 0, 100, 1000, 500);
                     this.sleep(3000).then(async () => await this.slide('answers'))
-                }),
+                })),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -64,12 +64,12 @@ export default class Rating extends Presentation {
             },
             'answers': {
                 html: 'rating/answers',
-                init: async () => await document.querySelector('#sendComment').addEventListener('click', async () => {
+                init: async () => await document.querySelector('#sendComment').addEventListener('click', async () => await this.prepareAction().then(async () => {
                     document.querySelector('.input-interactive').classList.toggle('active');
                     this.animateValueDelay('.left-counter', 50, 90, 1000, 500);
                     this.animateValueDelay('.right-counter', 100, 150, 1000, 500);
                     this.sleep(3000).then(async () => await this.slide('comments'))
-                }),
+                })),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -77,12 +77,12 @@ export default class Rating extends Presentation {
             },
             'comments': {
                 html: 'rating/comments',
-                init: async () => await document.querySelector('#sendComment').addEventListener('click', async () => {
+                init: async () => await document.querySelector('#sendComment').addEventListener('click', async () => await this.prepareAction().then(async () => {
                     document.querySelector('.input-interactive').classList.toggle('active');
                     this.animateValueDelay('.left-counter', 90, 150, 1000, 500);
                     this.animateValueDelay('.right-counter', 150, 300, 1000, 500);
                     this.sleep(2500).then(async () => await this.slide('collected'))
-                }),
+                })),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     document.querySelector('.profileOnTop').classList.toggle('card-transformation-animation', true);
@@ -93,7 +93,7 @@ export default class Rating extends Presentation {
             'collected': {
                 html: 'rating/collected',
                 init: async () => {
-                    await document.querySelector('#more').addEventListener('click', async () => this.slide('more'));
+                    await document.querySelector('#more').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('more')));
                     await this.sleep(1000).then(() => document.querySelector('.card').classList.toggle('top-animation', true));
                 },
                 exit: async () => {

@@ -16,7 +16,7 @@ export default class Rating extends Presentation {
         this.slides = {
             'intro': {
                 html: 'rating/intro',
-                init: async () => await document.querySelector('.switch').addEventListener('click', async () => this.sleep(2000).then(async () => await this.slide('whatIs'))),
+                init: async () => await document.querySelector('.switch').addEventListener('click', async () => await this.prepareAction().then(async () => this.sleep(2000).then(async () => await this.slide('whatIs')))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -24,7 +24,7 @@ export default class Rating extends Presentation {
             },
             'whatIs': {
                 html: 'services/whatIs',
-                init: async () => await document.querySelector('#accreditation').addEventListener('click', async () => this.slide('accreditation')),
+                init: async () => await document.querySelector('#accreditation').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('accreditation'))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -32,11 +32,11 @@ export default class Rating extends Presentation {
             },
             'accreditation': {
                 html: 'services/accreditation',
-                init: async () => await document.querySelector('#form').addEventListener('click', async () => {
+                init: async () => await document.querySelector('#form').addEventListener('click', async () => await this.prepareAction().then(async () => {
                     document.querySelector('#form').classList.toggle('active');
                     document.querySelector('.accreditation').classList.toggle('active');
                     this.sleep(2000).then(async () => this.slide('form'));
-                }),
+                })),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -44,7 +44,7 @@ export default class Rating extends Presentation {
             },
             'form': {
                 html: 'services/form',
-                init: async () => await document.querySelector('#done').addEventListener('click', async () => {
+                init: async () => await document.querySelector('#done').addEventListener('click', async () => await this.prepareAction().then(async () => {
                     document.querySelector('#done').classList.toggle('active');
                     await document.querySelector('#name').classList.toggle('typing', true);
                     await this.typeAnimation({
@@ -58,7 +58,7 @@ export default class Rating extends Presentation {
                     });
                     await document.querySelector('#categories').classList.toggle('typing', true);
                     this.sleep(1500).then(async () => this.slide('done'));
-                }),
+                })),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
@@ -66,7 +66,7 @@ export default class Rating extends Presentation {
             },
             'done': {
                 html: 'services/done',
-                init: async () => await document.querySelector('#acoins').addEventListener('click', async () => this.slide('acoins')),
+                init: async () => await document.querySelector('#acoins').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('acoins'))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -74,7 +74,7 @@ export default class Rating extends Presentation {
             },
             'acoins': {
                 html: 'services/acoins',
-                init: async () => await document.querySelector('#promo').addEventListener('click', async () => this.slide('promo')),
+                init: async () => await document.querySelector('#promo').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('promo'))),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -83,7 +83,7 @@ export default class Rating extends Presentation {
             'promo': {
                 html: 'services/promo',
                 init: async () => {
-                    await document.querySelector('#leads').addEventListener('click', async () => this.slide('leads'));
+                    await document.querySelector('#leads').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('leads')));
                     await this.sleep(500).then(() => this.typeAnimation({
                         node: document.querySelector('#promocode'),
                         content: 'PRODAMGARAJ'
@@ -97,7 +97,7 @@ export default class Rating extends Presentation {
             'leads': {
                 html: 'services/leads',
                 init: async () => {
-                    await document.querySelector('#more').addEventListener('click', async () => this.slide('more'));
+                    await document.querySelector('#more').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('more')));
                     await this.sleep(500).then(() => this.typeAnimation({
                         node: document.querySelector('#promocode'),
                         content: 'ssilka_na_tvoy_resurs'

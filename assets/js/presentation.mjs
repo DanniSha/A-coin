@@ -46,6 +46,10 @@ export default class Presentation {
 
         if (slide.source) this.TerminalApp.root.innerHTML = slide.source;
 
+        setTimeout(() => this.inAction = false, 1000);
+
+        this.inAction = false;
+
         document.body.querySelectorAll('[data-bind]').forEach(element => {
             this.data[element.dataset.bind] ? element.innerHTML = this.data[element.dataset.bind] : null
         });
@@ -61,6 +65,12 @@ export default class Presentation {
 
     sleep(timeout) {
         return new Promise(resolve => setTimeout(resolve, timeout));
+    }
+
+    async prepareAction() {
+        if (this.inAction) throw new Error();
+        this.inAction = true;
+        return await true;
     }
 
     animateValueDelay(id, start, end, duration, delay) {
