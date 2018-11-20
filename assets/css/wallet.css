@@ -29,3 +29,8 @@ section.wallet:before{
     top: unset;
     margin-top: 419rem;
 }
+
+.wallet.before-collected-animation.unload{
+    transform: translateY(420rem);
+    transition: transform .5s;
+}

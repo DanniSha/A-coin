@@ -27,3 +27,9 @@ section.buttons button.small-button{
     line-height: 1.38;
     text-transform: none;
 }
+
+section.buttons button.active {
+    --wave-size: 22rem;
+    --wide-wave-size: calc(var(--wave-size) + 33rem);
+    animation: waves 2s forwards;
+}

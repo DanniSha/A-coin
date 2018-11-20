@@ -1,9 +1,9 @@
-section.form{
+section.form {
     font-size: 40rem;
     line-height: 1.4;
 }
 
-section.form .input{
+section.form .input {
     /*width: 880px;*/
     width: 100%;
     height: 128rem;
@@ -13,3 +13,101 @@ section.form .input{
     margin-bottom: 40rem;
     background: rgba(255, 255, 255, 0.2);
 }
+
+section.form .input:before {
+    content: var(--placeholder, '');
+    opacity: .4;
+}
+
+section.form .input.typing {
+
+}
+
+section.form .input.typing:before {
+    content: '';
+}
+
+section.form .input.typing:after {
+    /*content: '';*/
+    height: 100%;
+    border-right: 1rem solid white;
+    margin-left: 2rem;
+    animation: 1s infinite type-cursor-blink;
+}
+
+@keyframes type-cursor-blink {
+    from, 50% {
+        opacity: 1;
+    }
+    50.0001%, to {
+        opacity: 0;
+    }
+}
+
+section.form .input#categories, section.form .input#categories * {
+    /*transition: all .5s;*/
+}
+
+section.form .input.typing#categories {
+    display: flex;
+    padding: 16rem;
+}
+
+section.form .input#categories span {
+    --delay: 0s;
+    display: inline-block;
+    padding: 0 60rem;
+    height: 100%;
+    border-radius: 100rem;
+    background: rgba(255, 255, 255, 0.2);
+    margin-right: 16rem;
+    line-height: 96rem;
+    opacity: 0;
+}
+
+section.form .input#categories span:nth-child(2) {
+    --delay: .5s;
+}
+
+section.form .input#categories span:nth-child(3) {
+    --delay: 1s;
+}
+
+section.form .input.typing#categories span {
+    animation: categories-typing-enter .5s var(--delay) forwards;
+    /*display: inline-block;*/
+}
+
+@keyframes categories-typing-enter {
+    from {
+        display: none;
+        opacity: 0;
+    }
+    to {
+        display: inline-block;
+        opacity: 1;
+    }
+}
+
+/*
+section.form.card-transformation.unload .input {
+    background: transparent;
+}
+
+section.form.card-transformation.unload #name {
+    font-size: 60rem;
+    line-height: 0.93;
+    transform: translate(50rem, 1000rem);
+}
+
+section.form.card-transformation.unload #price {
+    transform: translate(0, -28rem);
+}
+
+section.form.card-transformation.unload #price span {
+    font-weight: bold;
+}
+
+section.form.card-transformation.unload #categories {
+    transform: translate(24rem, -44rem);
+}*/

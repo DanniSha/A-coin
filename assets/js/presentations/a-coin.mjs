@@ -71,7 +71,7 @@ export default class Acoin extends Presentation {
                 }),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
-                    return await this.sleep(1000);
+                    return await this.sleep(500);
                 }
             },
             'collected': {
