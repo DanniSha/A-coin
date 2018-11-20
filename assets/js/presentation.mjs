@@ -46,9 +46,9 @@ export default class Presentation {
 
         if (slide.source) this.TerminalApp.root.innerHTML = slide.source;
 
-        setTimeout(() => this.inAction = false, 1000);
+        setTimeout(() => this.TerminalApp.inAction = false, 1000);
 
-        this.inAction = false;
+        this.TerminalApp.inAction = false;
 
         document.body.querySelectorAll('[data-bind]').forEach(element => {
             this.data[element.dataset.bind] ? element.innerHTML = this.data[element.dataset.bind] : null
@@ -56,9 +56,11 @@ export default class Presentation {
 
         if (slide.init) return await slide.init().finally((result) => {
             delete this.TerminalApp.changingSlide;
+            this.TerminalApp.inAction = false;
             return result;
         });
 
+        this.TerminalApp.inAction = false;
         return delete this.TerminalApp.changingSlide;
 
     }
@@ -68,8 +70,8 @@ export default class Presentation {
     }
 
     async prepareAction() {
-        if (this.inAction) throw new Error();
-        this.inAction = true;
+        if (this.TerminalApp.inAction) throw new Error();
+        this.TerminalApp.inAction = true;
         return await true;
     }
 
