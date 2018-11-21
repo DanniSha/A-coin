@@ -10,7 +10,7 @@ export default class TerminalApp {
 
         this.parameters = {
             htmlPath,
-            idleTimeout
+            // idleTimeout
         };
 
         this.presentations = {

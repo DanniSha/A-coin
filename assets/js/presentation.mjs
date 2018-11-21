@@ -76,17 +76,20 @@ export default class Presentation {
         return await true;
     }
 
-    async bindAction(target, action) {
+    async bindAction(target, action, triggerTimeout = false) {
         // console.log('Bind action for', selector);
         const targetNode = target instanceof Node ? target : document.querySelector(target);
-        await targetNode.addEventListener('click', async () => {
+        const actionWorker = async () => {
             // console.log('Triggered action from', selector);
             // console.log(this.TerminalApp.changingSlide, this.TerminalApp.currentAction, this.TerminalApp.currentSlideId);
             if (this.TerminalApp.changingSlide || this.TerminalApp.currentAction === this.TerminalApp.currentSlideId) return await false;
             this.TerminalApp.currentAction = this.TerminalApp.currentSlideId;
+            clearTimeout(this.TerminalApp.actionTimeout);
             // console.log('Check passed, executing action...');
             return await action();
-        });
+        };
+        await targetNode.addEventListener('click', actionWorker);
+        if (triggerTimeout) this.TerminalApp.actionTimeout = setTimeout(actionWorker, triggerTimeout);
     }
 
     animateValueDelay(id, start, end, duration, delay) {
