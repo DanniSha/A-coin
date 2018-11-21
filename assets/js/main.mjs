@@ -4,13 +4,14 @@ import ServicesPresentation from './presentations/services.mjs';
 
 export default class TerminalApp {
 
-    constructor({htmlPath = 'assets/html/', idleTimeout = localStorage.getItem('debug') ? false : 20000} = {}) {
+    constructor({htmlPath = 'assets/html/', idleTimeout = localStorage.getItem('debug') ? false : 20000, autoplay = true} = {}) {
 
         this.TerminalApp = this;
 
         this.parameters = {
             htmlPath,
-            // idleTimeout
+            // idleTimeout,
+            autoplay,
         };
 
         this.presentations = {

@@ -132,7 +132,7 @@ section.intro-switch.active .switch-frame {
     }
 }
 
-section.intro-switch.unload {
+section.intro-switch.unload:not(.reverse) {
     opacity: 0 !important;
     animation: none !important;
 }

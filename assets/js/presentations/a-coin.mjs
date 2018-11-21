@@ -100,7 +100,7 @@ export default class Acoin extends Presentation {
                         targetNode: document.querySelector('#presentationsMenu'),
                         excludePresentation: this.data.id
                     });
-                    this.sleep(3000).then(async () => await this.slide('intro'));
+                    if (this.TerminalApp.parameters.autoplay) this.sleep(3000).then(async () => await this.slide('intro'));
                 },
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));

@@ -89,7 +89,7 @@ export default class Presentation {
             return await action();
         };
         await targetNode.addEventListener('click', actionWorker);
-        if (triggerTimeout) this.TerminalApp.actionTimeout = setTimeout(actionWorker, triggerTimeout);
+        if (this.TerminalApp.parameters.autoplay && triggerTimeout) this.TerminalApp.actionTimeout = setTimeout(actionWorker, triggerTimeout);
     }
 
     animateValueDelay(id, start, end, duration, delay) {
