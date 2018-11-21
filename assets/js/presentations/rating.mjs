@@ -19,7 +19,7 @@ export default class Rating extends Presentation {
                 init: async () => await this.bindAction('.switch', async () => {
                     document.querySelector('.switch').parentNode.classList.toggle('active', true);
                     this.sleep(2000).then(async () => await this.slide('start'))
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -27,7 +27,7 @@ export default class Rating extends Presentation {
             },
             'start': {
                 html: 'rating/start',
-                init: async () => await this.bindAction('#whatIs', async () => this.slide('whatIs'), 3000),
+                init: async () => await this.bindAction('#whatIs', async () => this.slide('whatIs'), 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -36,7 +36,7 @@ export default class Rating extends Presentation {
             'whatIs': {
                 html: 'rating/whatIs',
                 init: async () => {
-                    await this.bindAction('#whatInfluences', async () => this.slide('whatInfluences'), 3000);
+                    await this.bindAction('#whatInfluences', async () => this.slide('whatInfluences'), 4000);
                     // await document.querySelector('#whatInfluences').addEventListener('click', async () => await this.prepareAction().then(async () => this.slide('whatInfluences')));
                     await this.sleep(1500).then(() => document.querySelector('.background-cards').classList.toggle('animation', true));
                 },
@@ -47,7 +47,7 @@ export default class Rating extends Presentation {
             },
             'whatInfluences': {
                 html: 'rating/whatInfluences',
-                init: async () => await this.bindAction('#writePosts', async () => this.slide('writePosts'), 3000),
+                init: async () => await this.bindAction('#writePosts', async () => this.slide('writePosts'), 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -60,7 +60,7 @@ export default class Rating extends Presentation {
                     this.animateValueDelay('.left-counter', 0, 50, 1000, 500);
                     this.animateValueDelay('.right-counter', 0, 100, 1000, 500);
                     this.sleep(3000).then(async () => await this.slide('answers'))
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -73,7 +73,7 @@ export default class Rating extends Presentation {
                     this.animateValueDelay('.left-counter', 50, 90, 1000, 500);
                     this.animateValueDelay('.right-counter', 100, 150, 1000, 500);
                     this.sleep(3000).then(async () => await this.slide('comments'))
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -86,7 +86,7 @@ export default class Rating extends Presentation {
                     this.animateValueDelay('.left-counter', 90, 150, 1000, 500);
                     this.animateValueDelay('.right-counter', 150, 300, 1000, 500);
                     this.sleep(2500).then(async () => await this.slide('collected'))
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     document.querySelector('.profileOnTop').classList.toggle('card-transformation-animation', true);
@@ -97,7 +97,7 @@ export default class Rating extends Presentation {
             'collected': {
                 html: 'rating/collected',
                 init: async () => {
-                    await this.bindAction('#more', async () => this.slide('more'), 3000);
+                    await this.bindAction('#more', async () => this.slide('more'), 4000);
                     await this.sleep(1000).then(() => document.querySelector('.card').classList.toggle('top-animation', true));
                 },
                 exit: async () => {

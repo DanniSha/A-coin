@@ -19,7 +19,7 @@ export default class Rating extends Presentation {
                 init: async () => await this.bindAction('.switch', async () => {
                     document.querySelector('.switch').parentNode.classList.toggle('active', true);
                     this.sleep(2000).then(async () => await this.slide('whatIs'))
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -27,7 +27,7 @@ export default class Rating extends Presentation {
             },
             'whatIs': {
                 html: 'services/whatIs',
-                init: async () => await this.bindAction('#accreditation', async () => this.slide('accreditation'), 3000),
+                init: async () => await this.bindAction('#accreditation', async () => this.slide('accreditation'), 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -39,7 +39,7 @@ export default class Rating extends Presentation {
                     document.querySelector('#form').classList.toggle('active');
                     document.querySelector('.accreditation').classList.toggle('active');
                     this.sleep(2000).then(async () => this.slide('form'));
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -61,7 +61,7 @@ export default class Rating extends Presentation {
                     });
                     await document.querySelector('#categories').classList.toggle('typing', true);
                     this.sleep(1500).then(async () => this.slide('done'));
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
@@ -69,7 +69,7 @@ export default class Rating extends Presentation {
             },
             'done': {
                 html: 'services/done',
-                init: async () => await this.bindAction('#acoins', async () => this.slide('acoins'), 3000),
+                init: async () => await this.bindAction('#acoins', async () => this.slide('acoins'), 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -77,7 +77,7 @@ export default class Rating extends Presentation {
             },
             'acoins': {
                 html: 'services/acoins',
-                init: async () => await this.bindAction('#promo', async () => this.slide('promo'), 3000),
+                init: async () => await this.bindAction('#promo', async () => this.slide('promo'), 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -86,7 +86,7 @@ export default class Rating extends Presentation {
             'promo': {
                 html: 'services/promo',
                 init: async () => {
-                    await this.bindAction('#leads', async () => this.slide('leads'), 3000);
+                    await this.bindAction('#leads', async () => this.slide('leads'), 4000);
                     await this.sleep(500).then(() => this.typeAnimation({
                         node: document.querySelector('#promocode'),
                         content: 'PRODAMGARAJ'
@@ -100,7 +100,7 @@ export default class Rating extends Presentation {
             'leads': {
                 html: 'services/leads',
                 init: async () => {
-                    await this.bindAction('#more', async () => this.slide('more'), 3000);
+                    await this.bindAction('#more', async () => this.slide('more'), 4000);
                     await this.sleep(500).then(() => this.typeAnimation({
                         node: document.querySelector('#promocode'),
                         content: 'ssilka_na_tvoy_resurs'

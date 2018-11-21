@@ -19,7 +19,7 @@ export default class Acoin extends Presentation {
                 init: async () => await this.bindAction('.switch', async () => {
                     document.querySelector('.switch').parentNode.classList.toggle('active', true);
                     await this.sleep(2000).then(async () => await this.slide('cover'));
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1500);
@@ -27,7 +27,7 @@ export default class Acoin extends Presentation {
             },
             'cover': {
                 html: 'a-coin/cover',
-                init: async () => await this.bindAction('#whatIs', async () => this.slide('whatIs'), 3000),
+                init: async () => await this.bindAction('#whatIs', async () => this.slide('whatIs'), 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
@@ -35,7 +35,7 @@ export default class Acoin extends Presentation {
             },
             'whatIs': {
                 html: 'a-coin/whatIs',
-                init: async () => await this.bindAction('#howToGet', async () => this.slide('likes'), 3000),
+                init: async () => await this.bindAction('#howToGet', async () => this.slide('likes'), 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
@@ -47,7 +47,7 @@ export default class Acoin extends Presentation {
                     document.querySelector('#toggle-heart').parentNode.parentNode.classList.toggle('active');
                     this.animateValueDelay('.wallet', 0, 100, 500, 500);
                     this.sleep(3000).then(async () => await this.slide('comments'))
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
@@ -59,7 +59,7 @@ export default class Acoin extends Presentation {
                     document.querySelector('#sendComment').parentNode.parentNode.classList.toggle('active');
                     this.animateValueDelay('.wallet', 100, 300, 500, 600);
                     this.sleep(3000).then(async () => await this.slide('services'))
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
@@ -71,7 +71,7 @@ export default class Acoin extends Presentation {
                     document.querySelector('#signUp').parentNode.parentNode.classList.toggle('active');
                     this.animateValueDelay('.wallet', 300, 500, 500, 1000);
                     this.sleep(3000).then(async () => await this.slide('collected'))
-                }, 3000),
+                }, 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);
@@ -79,7 +79,7 @@ export default class Acoin extends Presentation {
             },
             'collected': {
                 html: 'a-coin/collected',
-                init: async () => await this.bindAction('#whatToSpend', async () => this.slide('spend'), 3000),
+                init: async () => await this.bindAction('#whatToSpend', async () => this.slide('spend'), 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
@@ -87,7 +87,7 @@ export default class Acoin extends Presentation {
             },
             'spend': {
                 html: 'a-coin/spend',
-                init: async () => await this.bindAction('#more', async () => this.slide('more'), 3000),
+                init: async () => await this.bindAction('#more', async () => this.slide('more'), 4000),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(1000);
