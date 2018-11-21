@@ -134,6 +134,7 @@ section.intro-switch.active .switch-frame {
 
 section.intro-switch.unload {
     opacity: 0 !important;
+    animation: none !important;
 }
 
 section.coin-cover.switch-animation {
