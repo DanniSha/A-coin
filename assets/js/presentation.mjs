@@ -17,6 +17,7 @@ export default class Presentation {
     }
 
     async init(slide = null, historyPush = true) {
+        delete this.TerminalApp.currentAction;
         return await this.slide(slide || this.data.entrySlide, void (0), historyPush);
     }
 
@@ -73,6 +74,19 @@ export default class Presentation {
         if (this.TerminalApp.inAction) throw new Error();
         this.TerminalApp.inAction = true;
         return await true;
+    }
+
+    async bindAction(target, action) {
+        // console.log('Bind action for', selector);
+        const targetNode = target instanceof Node ? target : document.querySelector(target);
+        await targetNode.addEventListener('click', async () => {
+            // console.log('Triggered action from', selector);
+            // console.log(this.TerminalApp.changingSlide, this.TerminalApp.currentAction, this.TerminalApp.currentSlideId);
+            if (this.TerminalApp.changingSlide || this.TerminalApp.currentAction === this.TerminalApp.currentSlideId) return await false;
+            this.TerminalApp.currentAction = this.TerminalApp.currentSlideId;
+            // console.log('Check passed, executing action...');
+            return await action();
+        });
     }
 
     animateValueDelay(id, start, end, duration, delay) {

@@ -107,7 +107,8 @@ export default class TerminalApp {
             if (presentation[0] === excludePresentation) return;
             const presentationLink = document.createElement('button');
             presentationLink.innerText = presentation[1].data.title;
-            presentationLink.onclick = async () => await this.TerminalApp.presentations['a-coin'].prepareAction().then(this.TerminalApp.initPresentation.bind(this, presentation[0], null, true));
+            this.TerminalApp.presentations['a-coin'].bindAction(presentationLink, this.TerminalApp.initPresentation.bind(this, presentation[0], null, true));
+            // presentationLink.onclick = async () => await this.TerminalApp.presentations['a-coin'].bindAction().then();
             targetNode.appendChild(presentationLink);
         }));
     }
@@ -118,7 +119,7 @@ export default class TerminalApp {
     }
 
     triggerIdleTimer() {
-        if (this.TerminalApp.currentSlideId && this.TerminalApp.currentPresentation && this.TerminalApp.currentPresentation.data.entrySlide !== this.TerminalApp.currentSlideId)
+        if (this.TerminalApp.currentSlideId && this.TerminalApp.currentPresentation && ((this.TerminalApp.currentPresentation.data.entrySlide !== this.TerminalApp.currentSlideId) || (this.TerminalApp.currentPresentation.data.id !== this.parameters.defaultPresentation)))
             this.initPresentation(this.parameters.defaultPresentation || this.TerminalApp.currentPresentation.data.id);
         this.resetIdleTimer();
     }
