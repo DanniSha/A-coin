@@ -70,26 +70,36 @@ export default class Presentation {
         return new Promise(resolve => setTimeout(resolve, timeout));
     }
 
-    async prepareAction() {
-        if (this.TerminalApp.inAction) throw new Error();
-        this.TerminalApp.inAction = true;
-        return await true;
+    async bindAction(target, action, triggerTimeout = false) {
+        const targetNode = target instanceof Node ? target : document.querySelector(target);
+        const actionWorker = await this.createActionWorker(action);
+        await targetNode.addEventListener('click', actionWorker);
+        this.bindActionTimeout(actionWorker, triggerTimeout);
     }
 
-    async bindAction(target, action, triggerTimeout = false) {
-        // console.log('Bind action for', selector);
-        const targetNode = target instanceof Node ? target : document.querySelector(target);
-        const actionWorker = async () => {
-            // console.log('Triggered action from', selector);
-            // console.log(this.TerminalApp.changingSlide, this.TerminalApp.currentAction, this.TerminalApp.currentSlideId);
-            if (this.TerminalApp.changingSlide || this.TerminalApp.currentAction === this.TerminalApp.currentSlideId) return await false;
+    async createActionWorker(action) {
+        // console.log('Action worker created');
+        return () => {
+            if (this.TerminalApp.changingSlide || this.TerminalApp.currentAction === this.TerminalApp.currentSlideId) return false;
             this.TerminalApp.currentAction = this.TerminalApp.currentSlideId;
-            clearTimeout(this.TerminalApp.actionTimeout);
-            // console.log('Check passed, executing action...');
-            return await action();
-        };
-        await targetNode.addEventListener('click', actionWorker);
-        if (this.TerminalApp.parameters.autoplay && triggerTimeout) this.TerminalApp.actionTimeout = setTimeout(actionWorker, triggerTimeout);
+            this.clearActionTimeout();
+            // console.log('Trigger Action');
+            return action();
+        }
+    }
+
+    async bindActionTimeout(actionWorker, triggerTimeout) {
+        if (this.TerminalApp.parameters.autoplay && triggerTimeout) {
+            let action = actionWorker;
+            this.TerminalApp.actionTimeout = setTimeout(async () => {
+                // console.log('Triggered timeout');
+                return await action();
+            }, triggerTimeout);
+        }
+    }
+
+    clearActionTimeout() {
+        clearTimeout(this.TerminalApp.actionTimeout);
     }
 
     animateValueDelay(id, start, end, duration, delay) {
@@ -111,6 +121,14 @@ export default class Presentation {
                 clearInterval(timer);
             }
         }, stepTime);
+    }
+
+    async initMorePresentationsSlide() {
+        await this.TerminalApp.renderPresentationsLinks({
+            targetNode: document.querySelector('#presentationsMenu'),
+            excludePresentation: this.data.id
+        });
+        await this.bindActionTimeout(await this.createActionWorker(async () => await this.TerminalApp.initDefaultPresentation()), 3000);
     }
 
 }

@@ -97,7 +97,7 @@ export default class Rating extends Presentation {
             'collected': {
                 html: 'rating/collected',
                 init: async () => {
-                    await this.bindAction('#more', async () => this.slide('more'), 4000);
+                    await this.bindAction('#more', async () => this.slide('more'), 7000);
                     await this.sleep(1000).then(() => document.querySelector('.card').classList.toggle('top-animation', true));
                 },
                 exit: async () => {
@@ -107,13 +107,7 @@ export default class Rating extends Presentation {
             },
             'more': {
                 html: 'a-coin/more',
-                init: async () => {
-                    await this.TerminalApp.renderPresentationsLinks({
-                        targetNode: document.querySelector('#presentationsMenu'),
-                        excludePresentation: this.data.id
-                    });
-                    if (this.TerminalApp.parameters.autoplay) this.sleep(3000).then(async () => await this.slide('intro'));
-                },
+                init: this.initMorePresentationsSlide.bind(this),
                 exit: async () => {
                     document.querySelectorAll('section').forEach(section => section.classList.add('unload'));
                     return await this.sleep(500);

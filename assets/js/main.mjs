@@ -90,11 +90,15 @@ export default class TerminalApp {
 
     initPresentation(presentation, slide, historyPush = true) {
 
+        // console.log('initPresentation');
+
         // this.currentPresentation = this.presentations[presentation];
 
         // this.currentSlide = false;
 
         this.resetIdleTimer();
+
+        clearTimeout(this.TerminalApp.actionTimeout);
 
         if (!this.parameters.defaultPresentation) this.parameters.defaultPresentation = presentation;
 
@@ -108,7 +112,10 @@ export default class TerminalApp {
             if (presentation[0] === excludePresentation) return;
             const presentationLink = document.createElement('button');
             presentationLink.innerText = presentation[1].data.title;
-            this.TerminalApp.presentations['a-coin'].bindAction(presentationLink, this.TerminalApp.initPresentation.bind(this, presentation[0], null, true));
+            this.TerminalApp.presentations['a-coin'].bindAction(presentationLink,
+                // async ()=>await this.TerminalApp.initPresentation.bind(this, presentation[0], null, true)
+                this.TerminalApp.initPresentation.bind(this, presentation[0], null, true)
+            );
             // presentationLink.onclick = async () => await this.TerminalApp.presentations['a-coin'].bindAction().then();
             targetNode.appendChild(presentationLink);
         }));
@@ -123,6 +130,10 @@ export default class TerminalApp {
         if (this.TerminalApp.currentSlideId && this.TerminalApp.currentPresentation && ((this.TerminalApp.currentPresentation.data.entrySlide !== this.TerminalApp.currentSlideId) || (this.TerminalApp.currentPresentation.data.id !== this.parameters.defaultPresentation)))
             this.initPresentation(this.parameters.defaultPresentation || this.TerminalApp.currentPresentation.data.id);
         this.resetIdleTimer();
+    }
+
+    async initDefaultPresentation() {
+        await this.initPresentation(this.parameters.defaultPresentation || this.TerminalApp.currentPresentation.data.id)
     }
 
     async unloadPage(emptyBody = true) {

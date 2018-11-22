@@ -47,7 +47,7 @@ section.like-interactive .flying-particles{
     height: 80%;
 }
 
-[id='toggle-heart']:checked + .icon-heart {
+.active .icon-heart {
     background-image: url(../img/heart-fill.svg);
 }
 
@@ -59,7 +59,7 @@ section.like-interactive .flying-particles{
 }
 
 /* line 57, ../sass/like.scss */
-[id='toggle-heart']:checked + label {
+.active label {
     color: white;
     filter: none;
     will-change: font-size;
@@ -67,19 +67,19 @@ section.like-interactive .flying-particles{
 }
 
 /* line 63, ../sass/like.scss */
-[id='toggle-heart']:checked + label:before, [id='toggle-heart']:checked + label:after {
+.active label:before, .active label:after {
     animation: inherit;
     animation-timing-function: ease-out;
 }
 
 /* line 68, ../sass/like.scss */
-[id='toggle-heart']:checked + label:before {
+.active label:before {
     will-change: transform, border-width, border-color;
     animation-name: bubble;
 }
 
 /* line 73, ../sass/like.scss */
-[id='toggle-heart']:checked + label:after {
+.active label:after {
     will-change: opacity, box-shadow;
     animation-name: sparkles;
 }
