@@ -3,6 +3,9 @@ section.subtitle{
     line-height: 1.1;
     margin-bottom: 120rem;
 }
+section.subtitle span:last-child{
+    margin-left: 45rem;
+}
 section.title{
     font-size: 60rem;
     font-weight: 800;

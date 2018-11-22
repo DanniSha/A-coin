@@ -128,7 +128,7 @@ export default class Presentation {
             targetNode: document.querySelector('#presentationsMenu'),
             excludePresentation: this.data.id
         });
-        await this.bindActionTimeout(await this.createActionWorker(async () => await this.TerminalApp.initDefaultPresentation()), 3000);
+        await this.bindActionTimeout(await this.createActionWorker(async () => await this.TerminalApp.initDefaultPresentation()), 5000);
     }
 
 }
